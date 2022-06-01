@@ -17,6 +17,7 @@ use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
+use App\Orchid\Screens\SettaskScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,14 @@ Route::screen('users/{user}/edit', UserEditScreen::class)
             ->parent('platform.systems.users')
             ->push(__('User'), route('platform.systems.users.edit', $user));
     });
+
+// Добавить задания
+Route::screen('settask', SettaskScreen::class)
+    ->name('platform.settask');
+
+// Добавить задания
+Route::screen('tasks', \App\Orchid\Screens\TasksScreen::class)
+    ->name('platform.tasks');
 
 // Platform > System > Users > Create
 Route::screen('users/create', UserEditScreen::class)

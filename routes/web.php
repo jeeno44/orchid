@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/settask/{task}/{datetime}', [App\Http\Controllers\TaskController::class, 'settask']);
+Route::get('/settask', [App\Http\Controllers\TaskController::class, 'settask']);
 
 
 
