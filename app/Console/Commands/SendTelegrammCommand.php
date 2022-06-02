@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Task;
+use Mockery\Exception;
 
 class SendTelegrammCommand extends Command
 {
@@ -29,19 +30,33 @@ class SendTelegrammCommand extends Command
     public function handle()
     {
 
-	try{
-$task = Task::where('id',3)->where('status','active')->first();
-	}
-	catch(\Exception $e){
-	return $this->info($e);
-	}
-$dt = $task->datetime;
-$date = new \Carbon\Carbon($dt);
+        try{
+            $task = Task::where('status','active')->first();
+            $dt = $task->datetime;
+        }
+        catch(\Throwable $e){
+            return $this->info($e->getMessage());
+        }
 
-dump($date->diffInMinutes(now()->toDateTimeString()));
-dump(now()->toDateTimeString());
- 
+        $date = new \Carbon\Carbon($dt);
 
-        return $this->info("send to telega");
+//        dump($dt);
+//        dump(now()->diffInMinutes($dt,false));
+//        dump(now()->toDateTimeString());
+        if (now()->diffInMinutes($dt,false) < 0){
+
+            $url = "https://api.telegram.org/bot5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA/sendMessage?text=".$task->task."&chat_id=381581718";
+
+            file_get_contents($url);
+
+            Task::where("id",$task->id)->update([
+                "status" => "done"
+            ]);
+
+            return $this->info("SEND MESSAGE");
+        }
+        else{
+            return $this->info("ПОКА РАНО");
+        }
     }
 }

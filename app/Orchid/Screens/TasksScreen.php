@@ -17,7 +17,7 @@ class TasksScreen extends Screen
     public function query(): iterable
     {
         return [
-            'tasks' => Task::all()
+            'tasks' => Task::orderBy("id")->get()
         ];
     }
 
