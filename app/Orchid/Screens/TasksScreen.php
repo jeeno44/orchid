@@ -28,7 +28,7 @@ class TasksScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'TasksScreen';
+        return 'Все задачи';
     }
 
     /**
@@ -53,6 +53,7 @@ class TasksScreen extends Screen
                 TD::make('id'),
                 TD::make('task'),
                 TD::make('datetime'),
+                TD::make('status'),
                 TD::make('created_at'),
                 TD::make('updated_at'),
             ])

@@ -29,7 +29,7 @@ class SettaskScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'SettaskScreen';
+        return 'Добавить задачу';
     }
 
     /**
@@ -40,7 +40,7 @@ class SettaskScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Button::make('Send')->method("settask")
+            Button::make('Отправить')->method("settask")
         ];
     }
 
@@ -73,7 +73,7 @@ class SettaskScreen extends Screen
             "datetime" => $request->datetime,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('platform.tasks');
         //return view("settask",compact(""));
     }
 }
