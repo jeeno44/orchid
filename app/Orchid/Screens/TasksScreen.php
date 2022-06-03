@@ -6,6 +6,7 @@ use App\Models\Task;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Actions\Link;
 
 class TasksScreen extends Screen
 {
@@ -17,7 +18,7 @@ class TasksScreen extends Screen
     public function query(): iterable
     {
         return [
-            'tasks' => Task::orderBy("id")->get()
+            'tasks' => Task::orderBy("datetime")->get()
         ];
     }
 
@@ -54,6 +55,11 @@ class TasksScreen extends Screen
                 TD::make('task'),
                 TD::make('datetime'),
                 TD::make('status'),
+                TD::make('id','Delete')->render(function(Task $task){
+return Link::make($task->id)
+->href('deltask/'.$task->id);
+
+}),
                 TD::make('created_at'),
                 TD::make('updated_at'),
             ])

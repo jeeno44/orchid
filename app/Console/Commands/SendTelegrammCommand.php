@@ -31,7 +31,7 @@ class SendTelegrammCommand extends Command
     {
 
         try{
-            $task = Task::where('status','active')->first();
+            $task = Task::where('status','active')->OrderBy('datetime')->first();
             $dt = $task->datetime;
         }
         catch(\Throwable $e){
