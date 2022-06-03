@@ -13,4 +13,12 @@ class Task extends Model
 
     protected $fillable = ['task','datetime','status'];
 
+    protected $allowedSorts = [
+        'status'
+    ];
+
+    protected $allowFilters = [
+        'status'
+    ];
+
 }

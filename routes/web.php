@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/settask', [App\Http\Controllers\TaskController::class, 'settask']);
+Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
 
 

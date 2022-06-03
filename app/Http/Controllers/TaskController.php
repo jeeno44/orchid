@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    //
 
-    public function settask ($task,$datetime)
+    public function deltask ($id)
     {
-
-    //$message = "site gosuslugi";
-
-	//$url = "https://api.telegram.org/bot5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA/sendMessage?text=".$message."&chat_id=381581718";
-
-	//file_get_contents($url);
-
-	return view("settask");
-
+        Task::where("id",$id)->delete();
+        return redirect()->route("platform.tasks");
     }
 }
 

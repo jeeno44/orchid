@@ -52,11 +52,7 @@ Route::screen('users/{user}/edit', UserEditScreen::class)
             ->push(__('User'), route('platform.systems.users.edit', $user));
     });
 
-// Добавить задания
-Route::screen('settask', SettaskScreen::class)
-    ->name('platform.settask');
-
-// Добавить задания
+// Все задания
 Route::screen('tasks', \App\Orchid\Screens\TasksScreen::class)
     ->name('platform.tasks');
 
