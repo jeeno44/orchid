@@ -4,6 +4,8 @@ namespace App\Orchid\Screens;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Request as Rq;
+use Illuminate\Pagination\Paginator;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
@@ -24,6 +26,19 @@ class TasksScreen extends Screen
      */
     public function query(): iterable
     {
+        try {
+            $fullUrl = Rq::getRequestUri();
+            $fullUrl = explode("?",$fullUrl);
+            $currentPage = str_replace("page=","",$fullUrl[1]);
+        }
+        catch (\Exception $exception){
+            $currentPage = 1;
+        }
+
+        Paginator::currentPageResolver(function () use ($currentPage) {
+            return $currentPage;
+        });
+
         return [
             'tasks' => Task::orderBy("datetime")->paginate(10)
         ];
