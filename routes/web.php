@@ -18,6 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('flex',function (){
+
+    return view("flex");
+
+});
+
 Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
 

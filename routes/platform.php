@@ -75,46 +75,46 @@ Route::screen('users', UserListScreen::class)
     });
 
 // Platform > System > Roles > Role
-Route::screen('roles/{role}/edit', RoleEditScreen::class)
+/*Route::screen('roles/{role}/edit', RoleEditScreen::class)
     ->name('platform.systems.roles.edit')
     ->breadcrumbs(function (Trail $trail, $role) {
         return $trail
             ->parent('platform.systems.roles')
             ->push(__('Role'), route('platform.systems.roles.edit', $role));
-    });
+    });*/
 
 // Platform > System > Roles > Create
-Route::screen('roles/create', RoleEditScreen::class)
+/*Route::screen('roles/create', RoleEditScreen::class)
     ->name('platform.systems.roles.create')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.systems.roles')
             ->push(__('Create'), route('platform.systems.roles.create'));
-    });
+    });*/
 
 // Platform > System > Roles
-Route::screen('roles', RoleListScreen::class)
+/*Route::screen('roles', RoleListScreen::class)
     ->name('platform.systems.roles')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push(__('Roles'), route('platform.systems.roles'));
-    });
+    });*/
 
 // Example...
-Route::screen('example', ExampleScreen::class)
+/*Route::screen('example', ExampleScreen::class)
     ->name('platform.example')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('Example screen');
-    });
+    });*/
 
-Route::screen('example-fields', ExampleFieldsScreen::class)->name('platform.example.fields');
-Route::screen('example-layouts', ExampleLayoutsScreen::class)->name('platform.example.layouts');
-Route::screen('example-charts', ExampleChartsScreen::class)->name('platform.example.charts');
-Route::screen('example-editors', ExampleTextEditorsScreen::class)->name('platform.example.editors');
-Route::screen('example-cards', ExampleCardsScreen::class)->name('platform.example.cards');
-Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
+//Route::screen('example-fields', ExampleFieldsScreen::class)->name('platform.example.fields');
+//Route::screen('example-layouts', ExampleLayoutsScreen::class)->name('platform.example.layouts');
+//Route::screen('example-charts', ExampleChartsScreen::class)->name('platform.example.charts');
+//Route::screen('example-editors', ExampleTextEditorsScreen::class)->name('platform.example.editors');
+//Route::screen('example-cards', ExampleCardsScreen::class)->name('platform.example.cards');
+//Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');

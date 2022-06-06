@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Support\Facades\Toast;
+use Orchid\Attachment\File;
 
 class TasksScreen extends Screen
 {
@@ -23,7 +25,7 @@ class TasksScreen extends Screen
     public function query(): iterable
     {
         return [
-            'tasks' => Task::orderBy("datetime")->get()
+            'tasks' => Task::orderBy("datetime")->paginate(10)
         ];
     }
 
@@ -76,7 +78,7 @@ return Link::make($task->id)
                 DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
             Layout::modal("editTask",Layout::rows([
-                Input::make("")->type("file")
+                Upload::make('proto')->title("Загрузка")
             ]))
         ];
     }
@@ -99,5 +101,14 @@ return Link::make($task->id)
 
         //return redirect()->route('platform.tasks');
         //return view("settask",compact(""));
+    }
+
+    public function edittask (Request $request)
+    {
+        //$file = new File($request->file('photo'));
+        //$attachment = $file->load();
+        dump($request->proto);
+        dd($request->file("proto"));
+        //return view("edittask",compact(""));
     }
 }
