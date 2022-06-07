@@ -3,7 +3,9 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Task;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Orchid\Screen\Fields\Group;
 use Request as Rq;
 use Illuminate\Pagination\Paginator;
 use Orchid\Screen\Actions\ModalToggle;
@@ -40,7 +42,8 @@ class TasksScreen extends Screen
         });
 
         return [
-            'tasks' => Task::orderBy("datetime")->paginate(10)
+            //'lask' => Task::find(19),
+            'tasks' => Task::orderBy("datetime")->paginate(10),
         ];
     }
 
@@ -76,25 +79,44 @@ class TasksScreen extends Screen
     {
         return [
             Layout::table('tasks',[
-                TD::make('id'),
-                TD::make('task'),
-                TD::make('datetime'),
-                TD::make('status')->sort(),
-                TD::make('id','Delete')->render(function(Task $task){
+                TD::make('id')->width(55),
+                TD::make('task')->sort()->filter(),
+                TD::make('datetime')->width(155),
+                TD::make('status')->width(100)->sort(),
+                TD::make('Edit')->render(function(Task $task){
+                    return ModalToggle::make("Редакторовать")
+                        ->modal("editTask")
+                        ->method("edittask")
+                        ->modalTitle("Редактировать задание ".$task->task)
+                        ->asyncParameters([
+                            'task' => $task->id
+                        ]);
+                }),
+                TD::make('id','Delete')->width(100)->align(TD::ALIGN_RIGHT)->render(function(Task $task){
 return Link::make($task->id)
 ->href('deltask/'.$task->id);
 
 }),
-                TD::make('created_at'),
-                TD::make('updated_at'),
+                TD::make('created_at')->width(160)->defaultHidden()->render(function(Task $task){
+                    $dt = Carbon::create($task->created_at);
+                    return $dt->format("d.m.Y H:i");
+                }),
+                TD::make('updated_at')->width(160)->defaultHidden()->render(function(Task $task){
+                    $dt = Carbon::create($task->created_at);
+                    return $dt->format("d.m.Y H:i");
+                }),
             ]),
             Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
                 DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
             Layout::modal("editTask",Layout::rows([
-                Upload::make('proto')->title("Загрузка")
-            ]))
+                //Upload::make('proto')->title("Загрузка")
+                Input::make("task.id")->type('hidden'),
+                Input::make("task.task"),
+//                Input::make("lask.datetime"),
+                DateTimer::make('task.datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
+            ]))->async('asyncGetTask')
         ];
     }
 
@@ -120,10 +142,39 @@ return Link::make($task->id)
 
     public function edittask (Request $request)
     {
+//        dump($request->id);
+//        dump($request->task['id']);
+//        dump($request->task['task']);
+//        dump($request->task['datetime']);
+        //dd($request->except('_token'));
+        /*$rules=[
+            'id'=>['required'],
+            'task'=>['required','min:5'],
+            'datetime'=>['required'],
+        ];
+
+        $this->validate($request,$rules);*/
+
+        Task::where("id",$request->task['id'])->update([
+            "id" => $request->task["id"],
+            "task" => $request->task["task"],
+            "datetime" => $request->task["datetime"],
+        ]);
+
+        //return redirect()->back();
+
+        //dd($request->except('_token'));
         //$file = new File($request->file('photo'));
         //$attachment = $file->load();
-        dump($request->proto);
-        dd($request->file("proto"));
+        //dump($request->proto);
+        //dd($request->file("proto"));
         //return view("edittask",compact(""));
+    }
+
+    public function asyncGetTask (Task $task): array
+    {
+        return [
+            "task" => $task,
+        ];
     }
 }
