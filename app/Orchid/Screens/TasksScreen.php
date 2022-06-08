@@ -159,6 +159,7 @@ return Link::make($task->id)
             "id" => $request->task["id"],
             "task" => $request->task["task"],
             "datetime" => $request->task["datetime"],
+            "status" => "active",
         ]);
 
         //return redirect()->back();
