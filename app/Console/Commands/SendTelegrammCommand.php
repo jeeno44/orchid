@@ -47,7 +47,13 @@ class SendTelegrammCommand extends Command
 
             $url = "https://api.telegram.org/bot5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA/sendMessage?text=".$task->task."&chat_id=381581718";
 
-            file_get_contents($url);
+            if ($_SERVER['APP_URL'] == "http://localhost"){
+//                dump($_SERVER['SERVER_NAME']);
+                $this->info("no send");
+            }
+            else{
+                file_get_contents($url);
+            }
 
             Task::where("id",$task->id)->update([
                 "status" => "done"
