@@ -45,7 +45,7 @@ class SendTelegrammCommand extends Command
 
             $url = "https://api.telegram.org/bot".$TOKEN."/sendMessage?text=".$task->task."&chat_id=381581718";
 
-            if ($_SERVER['SERVER_NAME'] == "orchid.pov"){
+            if ($_SERVER['APP_NAME'] == "orchid"){
                 $this->info("no send");
             }
             else{
