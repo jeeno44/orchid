@@ -29,6 +29,7 @@ class SendTelegrammCommand extends Command
      */
     public function handle()
     {
+        $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
         try{
             $task = Task::where('status','active')->OrderBy('datetime')->first();
@@ -40,15 +41,11 @@ class SendTelegrammCommand extends Command
 
         $date = new \Carbon\Carbon($dt);
 
-//        dump($dt);
-//        dump(now()->diffInMinutes($dt,false));
-//        dump(now()->toDateTimeString());
         if (now()->diffInMinutes($dt,false) < 0){
 
-            $url = "https://api.telegram.org/bot5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA/sendMessage?text=".$task->task."&chat_id=381581718";
+            $url = "https://api.telegram.org/bot".$TOKEN."/sendMessage?text=".$task->task."&chat_id=381581718";
 
-            if ($_SERVER['APP_URL'] == "http://localhost"){
-//                dump($_SERVER['SERVER_NAME']);
+            if ($_SERVER['SERVER_NAME'] == "orchid.pov"){
                 $this->info("no send");
             }
             else{
