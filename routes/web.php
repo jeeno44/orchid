@@ -29,4 +29,4 @@ Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
 
 
-
+// elu palu
