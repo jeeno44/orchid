@@ -27,10 +27,3 @@ Route::get('flex',function (){
 Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
 
-//asdasdas
-//asdasdas
-//asdasdas
-//asdasdas
-//asdasdas
-
-// elu palu
