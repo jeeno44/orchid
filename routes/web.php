@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use Illuminate\Http\Client\Request as REQ;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,23 +27,14 @@ Route::get('flex',function (){
 
 Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
+Route::get('fara',function (){
+
+
+    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),'users'.__FUNCTION__.".xlsx");
+
+})->middleware(['auth']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
