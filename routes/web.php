@@ -32,7 +32,7 @@ Route::get('fara',function (){
 
     return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),'users'.__FUNCTION__.".xlsx");
 
-})->middleware(['auth'])->name("export_users");
+})->name("export_users");
 
 Auth::routes();
 
