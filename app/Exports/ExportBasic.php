@@ -15,11 +15,18 @@ class ExportBasic implements FromCollection
     */
     public function collection()
     {
-        //return User::all();
+        return User::all();
 
-        $users = User::where("id",">",0)->get();
+        //$users = User::where("id",">",0)->get();
 
         //return $users;
+
+        //return view('excel', compact('users'));
+    }
+
+    public function view ():View
+    {
+        $users = User::all();
 
         return view('excel', compact('users'));
     }
