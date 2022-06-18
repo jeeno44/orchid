@@ -12,9 +12,9 @@ class ExportBasic implements FromCollection
     */
     public function collection()
     {
-        return User::all();
+        //return User::all();
 
-        //$users = User::all();
+        $users = User::all();
 
         //return view('excel', compact('users'));
     }
