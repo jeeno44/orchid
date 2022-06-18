@@ -16,8 +16,8 @@ class ExportBasic implements FromCollection
 
         $users = User::where("id",">",0)->get();
 
-        return $users;
+        //return $users;
 
-        //return view('excel', compact('users'));
+        return view('excel', compact('users'));
     }
 }
