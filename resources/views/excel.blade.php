@@ -37,11 +37,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($items as $item)
+                @foreach($users as $user)
                     <tr>
-                        <td>{{$item->id}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->email}}</td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
                     </tr>
                 @endforeach
                 </tbody>
