@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\View\View;
@@ -24,7 +25,12 @@ class ExportBasic implements FromCollection
       //  return User::all();
 
         //$users = User::get("id","name","email");
-        $users = User::all("id","name","email");
+//        $users = User::all("id","name","email");
+
+        $users = new Collection([
+            "name" => "jeep",
+            "email" => "jeep",
+        ]);
 
         return $users;
 
