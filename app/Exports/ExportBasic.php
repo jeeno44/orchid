@@ -13,7 +13,8 @@ use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 
-class ExportBasic implements FromCollection,WithCustomStartCell
+//class ExportBasic implements FromCollection,WithCustomStartCell
+class ExportBasic implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -21,7 +22,7 @@ class ExportBasic implements FromCollection,WithCustomStartCell
 
     //use Exportable;
 
-    public function collection()
+    /*public function collection()
     {
       //  return User::all();
 
@@ -35,7 +36,7 @@ class ExportBasic implements FromCollection,WithCustomStartCell
         return $users;
 
         //return view('excel', compact('users'));
-    }
+    }*/
 
     public function view ():View
     {
@@ -43,9 +44,9 @@ class ExportBasic implements FromCollection,WithCustomStartCell
 
         return view('excel', compact('users'));
     }
-
+/*
     public function startCell ():string
     {
         return "B2";
-    }
+    }*/
 }
