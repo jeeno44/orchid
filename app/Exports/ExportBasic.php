@@ -11,37 +11,24 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 
-class ExportBasic implements FromQuery,WithHeadingRow
+class ExportBasic implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
 
-    use Exportable;
+    //use Exportable;
 
-    public function query()
+    public function collection()
     {
-        $users = User::all();
-
-        return $users;
-    }
-
-    public function headings()
-    {
-        return ["id", "name", "email"];
-    }
-
-
-    //public function collection()
-    //{
       //  return User::all();
 
-        //$users = User::where("id",">",0)->get();
+        $users = User::get("id","name","email");
 
         //return $users;
 
         //return view('excel', compact('users'));
-    //}
+    }
 
     /*public function view ():View
     {
