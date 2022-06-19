@@ -9,10 +9,11 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 
-class ExportBasic implements FromCollection
+class ExportBasic implements FromCollection,WithCustomStartCell
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -41,5 +42,10 @@ class ExportBasic implements FromCollection
         $users = User::all();
 
         return view('excel', compact('users'));
+    }
+
+    public function startCell ():string
+    {
+        return "B2";
     }
 }
