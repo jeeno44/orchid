@@ -28,7 +28,7 @@ class ExportBasic implements FromCollection
 //        $users = User::all("id","name","email");
 
         $users = new Collection([
-            ["name" => "jeep","email" => "jeep"],
+            ["name" => "jeep","email" => "jeep@mail.ru"],
         ]);
 
         return $users;
