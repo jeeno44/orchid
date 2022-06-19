@@ -14,16 +14,31 @@ class ExportBasic implements FromCollection,WithHeadingRow
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+
+
+    public function query()
     {
-        return User::all();
+        $users = User::get('id','name','email');
+
+        return $users;
+    }
+
+    public function headings()
+    {
+        return ["id", "name", "email"];
+    }
+
+
+    //public function collection()
+    //{
+      //  return User::all();
 
         //$users = User::where("id",">",0)->get();
 
         //return $users;
 
         //return view('excel', compact('users'));
-    }
+    //}
 
     /*public function view ():View
     {
