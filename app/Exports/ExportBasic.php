@@ -30,10 +30,10 @@ class ExportBasic implements FromCollection
         //return view('excel', compact('users'));
     }
 
-    /*public function view ():View
+    public function view ():View
     {
         $users = User::all();
 
         return view('excel', compact('users'));
-    }*/
+    }
 }
