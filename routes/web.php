@@ -30,7 +30,7 @@ Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 Route::get('fara',function (){
 
 
-    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),'users'.__FUNCTION__.".xlsx");
+    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),"users.xlsx");
 
 })->name("export_users");
 

@@ -21,7 +21,7 @@ class ExportBasic implements FromQuery,WithHeadingRow
 
     public function query()
     {
-        $users = User::get('id','name','email');
+        $users = User::all();
 
         return $users;
     }
