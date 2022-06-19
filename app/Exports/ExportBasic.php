@@ -6,9 +6,10 @@ use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 
-class ExportBasic implements FromCollection
+class ExportBasic implements FromCollection,WithHeadingRow
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -24,10 +25,10 @@ class ExportBasic implements FromCollection
         //return view('excel', compact('users'));
     }
 
-    public function view ():View
+    /*public function view ():View
     {
         $users = User::all();
 
         return view('excel', compact('users'));
-    }
+    }*/
 }
