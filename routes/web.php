@@ -29,7 +29,7 @@ Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
 Route::get('export',function (){
 
-    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),"users.xlsx");
+    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),"users.xlsx", true, ['X-Vapor-Base64-Encode' => 'True']);
 
 })->name("export_users");
 
