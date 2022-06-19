@@ -27,8 +27,7 @@ Route::get('/', function () {
 
 Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
-Route::get('fara',function (){
-
+Route::get('export',function (){
 
     return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),"users.xlsx");
 
