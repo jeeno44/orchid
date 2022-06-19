@@ -29,7 +29,7 @@ Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
 
 Route::get('export',function (){
 
-    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),"users_".now()->toDateTimeString().".xlsx");
+    return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\ExportBasic(),"users_".str_replace(" ","_",now()->toDateTimeString()).".xlsx");
 
 })->name("export_users");
 
