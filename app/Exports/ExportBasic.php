@@ -24,7 +24,7 @@ class ExportBasic implements FromCollection
       //  return User::all();
 
         //$users = User::get("id","name","email");
-        $users = User::all("id","name","email");
+        $users = User::all("id","name","email", true, ['X-Vapor-Base64-Encode' => 'True']);
 
         return $users;
 
