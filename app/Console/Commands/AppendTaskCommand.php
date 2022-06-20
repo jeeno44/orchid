@@ -12,7 +12,7 @@ class AppendTaskCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'set:task {task} {datetime}';
+    protected $signature = 'set:task {pass} {task} {datetime}';
 
     /**
      * The console command description.
@@ -28,10 +28,13 @@ class AppendTaskCommand extends Command
      */
     public function handle()
     {
-	Task::create([
-	"task" => $this->argument("task"),
-	"datetime" => $this->argument("datetime"),
-	]);
-        return $this->info($this->argument('task').' - '.$this->argument('datetime'));
+
+	if($this->argument('pass') == "123456789"){
+		Task::create([
+		"task" => $this->argument("task"),
+		"datetime" => $this->argument("datetime"),
+		]);
+        	return $this->info($this->argument('task').' - '.$this->argument('datetime'));
+	}
     }
 }
