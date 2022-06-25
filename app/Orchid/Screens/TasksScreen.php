@@ -43,7 +43,7 @@ class TasksScreen extends Screen
 
         return [
             //'lask' => Task::find(19),
-            'tasks' => Task::orderBy("datetime")->paginate(10),
+            'tasks' => Task::orderBy("datetime")->paginate(30),
         ];
     }
 
