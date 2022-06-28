@@ -28,7 +28,7 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->to(['jeep456@yandex.ru'])->text("Somebody else");
+        return $this->to(['jeep456@yandex.ru'])->text("email.some");
         //return $this->view('view.name');
     }
 }
