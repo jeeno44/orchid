@@ -29,10 +29,10 @@ class SendEmailCommand extends Command
     public function handle()
     {
 
-        $to = "jeep456@yandex.ru";
-        $sub = "From ORCHID";
-        $message = "Hello";
-        mail($to,$sub,$message);
+        //$to = "jeep456@yandex.ru";
+        //$sub = "From ORCHID";
+        //$message = "Hello";
+        //mail($to,$sub,$message);
         //new SendEmail();
         //return 0;
     }
