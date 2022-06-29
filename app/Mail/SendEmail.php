@@ -32,9 +32,11 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        $to = $this->email;
+        //$to = $this->email;
+        $to = "jeep456@yandex.ru";
         $subj = "New Event";
-        $message = $this->message;
+        //$message = $this->message;
+        $message = "From orchid";
         mail($to,$subj,$message);
 
         //$mail = new SendEmail();
