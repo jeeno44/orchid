@@ -40,7 +40,7 @@ class SendEmail extends Mailable
         mail($to,$subj,$message);
 
         //$mail = new SendEmail();
-        new SendEmail();
+        //new SendEmail();
         //$mail->later(now());
         //return $this->to(['jeep456@yandex.ru'])->text("email.some");
         //return $this->view('view.name');
