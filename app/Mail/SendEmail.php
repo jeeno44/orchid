@@ -11,14 +11,18 @@ class SendEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $email;
+    public $message;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($email = "jeep456@yandex.ru",$message = "Hello jeep")
     {
-        //
+        $this->email = $email;
+        $this->message = $message;
     }
 
     /**
@@ -28,7 +32,15 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->to(['jeep456@yandex.ru'])->text("email.some");
+        $to = $this->email;
+        $subj = "New Event";
+        $message = $this->message;
+        mail($to,$subj,$message);
+
+        //$mail = new SendEmail();
+        new SendEmail();
+        //$mail->later(now());
+        //return $this->to(['jeep456@yandex.ru'])->text("email.some");
         //return $this->view('view.name');
     }
 }
