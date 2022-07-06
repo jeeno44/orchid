@@ -31,7 +31,10 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Задания')
             ->icon('list')
             ->route("platform.tasks"),
-            Menu::make('Export Users')
+            Menu::make('Учёт финансов')
+            ->icon('list')
+            ->route("fins"),
+            Menu::make('Экспорт пользователей')
             ->icon('list')
             ->route("export_users"),
             //Menu::make('Добавить задание')->icon('list')->route("platform.settask"),

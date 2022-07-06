@@ -56,6 +56,10 @@ Route::screen('users/{user}/edit', UserEditScreen::class)
 Route::screen('tasks', \App\Orchid\Screens\TasksScreen::class)
     ->name('platform.tasks');
 
+// Учёт финансов
+Route::screen('fins', \App\Orchid\Screens\FinansyScreen::class)
+    ->name('platform.fins');
+
 // Platform > System > Users > Create
 Route::screen('users/create', UserEditScreen::class)
     ->name('platform.systems.users.create')
