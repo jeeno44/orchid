@@ -12,7 +12,6 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
-use Illuminate\Http\Request;
 
 class FinansyScreen extends Screen
 {
@@ -25,7 +24,7 @@ class FinansyScreen extends Screen
     {
 
         return [
-            "fins" => Finans::orderBy("id")->get()
+            "fins" => Finans::all()
 //            "fins" => Finans::orderBy("id
         ];
     }
@@ -48,7 +47,7 @@ class FinansyScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            ModalToggle::make("Добавить учёт")->modal("appendFins")->method("setfin"),
+//            ModalToggle::make("Добавить учёт")->modal("appendFins")->method("setfin"),
         ];
     }
 
@@ -66,10 +65,10 @@ class FinansyScreen extends Screen
                 TD::make('name')->sort()->filter(),
                 TD::make('price')->sort()->filter(),*/
             ]),
-            Layout::modal("appendTask",Layout::rows([
+            /*Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
                 DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
-            ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
+            ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),*/
 
         ];
     }
