@@ -24,7 +24,7 @@ class FinansyScreen extends Screen
     {
 
         return [
-            "fins" => Finans::orderBy("id")->paginate(20)
+            "fins" => Finans::orderBy("id")->get()
         ];
     }
 
