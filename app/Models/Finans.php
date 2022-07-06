@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Finans extends Model
 {
-    protected $table = "finans";
+    public $table = "finans";
 
     protected $fillable = [
         "date",
