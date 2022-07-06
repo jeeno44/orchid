@@ -33,7 +33,7 @@ class PlatformProvider extends OrchidServiceProvider
             ->route("platform.tasks"),
             Menu::make('Учёт финансов')
             ->icon('list')
-            ->route("fins"),
+            ->route("platform.fins"),
             Menu::make('Экспорт пользователей')
             ->icon('list')
             ->route("export_users"),
