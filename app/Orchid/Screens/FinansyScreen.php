@@ -58,6 +58,14 @@ class FinansyScreen extends Screen
      */
     public function layout(): iterable
     {
+        Finans::create([
+            "date" => now()->toDateString(),
+            "type" => "rash",
+            "name" => "Суши",
+            "count" => 1,
+            "price" => 500,
+        ]);
+
         return [
             Layout::table('fins',[
                 TD::make('id')->width(55),

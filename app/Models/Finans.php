@@ -13,7 +13,6 @@ class Finans extends Model
         "date",
         "name",
         "type",
-        "name",
         "count",
         "price",
     ];
