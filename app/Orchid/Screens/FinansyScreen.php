@@ -60,10 +60,10 @@ class FinansyScreen extends Screen
     {
         return [
             Layout::table('fins',[
-                TD::make('id')->width(55),
+                TD::make('id')->width(55),/*
                 TD::make('date')->sort()->filter(),
                 TD::make('name')->sort()->filter(),
-                TD::make('price')->sort()->filter(),
+                TD::make('price')->sort()->filter(),*/
             ]),
             Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
