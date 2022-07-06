@@ -59,7 +59,7 @@ class FinansyScreen extends Screen
     {
         return [
             Layout::table('fins',[
-                //TD::make('id')->width(55),
+                TD::make('id'),
                 /*
                 TD::make('date')->sort()->filter(),
                 TD::make('name')->sort()->filter(),
