@@ -73,10 +73,9 @@ class FinansyScreen extends Screen
             Layout::modal("appendFin",Layout::rows([
                 Group::make([
                     Input::make('name')->required()->type("text")->title('Имя'),
-                    Input::make('price')->required()->type("text")->title('Цена'),
+                    Input::make('price')->required()->type("text")->title('Цена')->width(20),
                 ])
 
-//                DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
             ]))->title("Добавить учёт")->applyButton("Добавить")->closeButton("Отмена"),
 
 
@@ -90,7 +89,7 @@ class FinansyScreen extends Screen
             "type" => "rash",
             "name" => $request->name,
             "count" => 1,
-            "price" => 480,
+            "price" => $request->price,
         ]);
     }
 }
