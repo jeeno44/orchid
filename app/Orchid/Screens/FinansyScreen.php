@@ -67,13 +67,15 @@ class FinansyScreen extends Screen
                 TD::make('id'),
                 TD::make('date')->sort()->filter(),
                 TD::make('name')->sort()->filter(),
-                TD::make('type')->sort()->filter(),
+                TD::make('type')->render(function (Finans $fins){
+                    return ($fins->type == "rash") ? "Расход" : "Доход" ;
+                }),
                 TD::make('price')->sort()->filter(),
             ]),
             Layout::modal("appendFin",Layout::rows([
                 Group::make([
                     Input::make('name')->required()->type("text")->title('Имя'),
-                    Input::make('price')->required()->type("text")->title('Цена')->width(20),
+                    Input::make('price')->required()->type("text")->title('Цена')->width("20px"),
                 ])
 
             ]))->title("Добавить учёт")->applyButton("Добавить")->closeButton("Отмена"),
