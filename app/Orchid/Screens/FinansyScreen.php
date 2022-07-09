@@ -46,7 +46,7 @@ class FinansyScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-//            ModalToggle::make("Добавить учёт")->modal("appendFins")->method("setfin"),
+            ModalToggle::make("Добавить запись")->modal("appendFin")->method("setfin"),
         ];
     }
 
@@ -67,7 +67,17 @@ class FinansyScreen extends Screen
                 TD::make('type')->sort()->filter(),
                 TD::make('price')->sort()->filter(),
             ]),
+            Layout::modal("appendFin",Layout::rows([
+                Input::make('name')->required()->type("text")->title('Имя'),
+//                DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
+            ]))->title("Добавить учёт")->applyButton("Добавить")->closeButton("Отмена"),
+
 
         ];
+    }
+
+    public function setfin ()
+    {
+        dump("OK");
     }
 }
