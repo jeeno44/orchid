@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Finans;
+use App\Models\Task;
 use Carbon\Carbon;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
@@ -23,7 +24,7 @@ class FinansyScreen extends Screen
     {
 
         return [
-            "finans" => Finans::all()
+            "finans" => Task::all()
 //            "fins" => Finans::orderBy("id
         ];
     }
