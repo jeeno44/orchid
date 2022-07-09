@@ -10,6 +10,7 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\DateTimer;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
@@ -70,12 +71,11 @@ class FinansyScreen extends Screen
                 TD::make('price')->sort()->filter(),
             ]),
             Layout::modal("appendFin",Layout::rows([
-                Input::make('name')->required()->type("text")->title('Имя'),
-                CheckBox::make('free')
-                    ->value(1)
-                    ->title('Free')
-                    ->placeholder('Event for free')
-                    ->help('Event for free')
+                Group::make([
+                    Input::make('name')->required()->type("text")->title('Имя'),
+                    Input::make('price')->required()->type("text")->title('Цена'),
+                ])
+
 //                DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
             ]))->title("Добавить учёт")->applyButton("Добавить")->closeButton("Отмена"),
 
