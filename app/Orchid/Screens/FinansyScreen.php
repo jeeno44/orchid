@@ -23,7 +23,7 @@ class FinansyScreen extends Screen
     {
 
         return [
-            "fins" => Finans::all()
+            "finans" => Finans::all()
 //            "fins" => Finans::orderBy("id
         ];
     }
@@ -57,10 +57,10 @@ class FinansyScreen extends Screen
      */
     public function layout(): iterable
     {
-        dump("fins");
+//        dump("fins");
 
         return [
-            Layout::table('fins',[
+            Layout::table('finans',[
                 TD::make('id'),
                 /*
                 TD::make('date')->sort()->filter(),
