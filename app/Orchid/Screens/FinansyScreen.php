@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
@@ -70,6 +71,11 @@ class FinansyScreen extends Screen
             ]),
             Layout::modal("appendFin",Layout::rows([
                 Input::make('name')->required()->type("text")->title('Имя'),
+                CheckBox::make('free')
+                    ->value(1)
+                    ->title('Free')
+                    ->placeholder('Event for free')
+                    ->help('Event for free')
 //                DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
             ]))->title("Добавить учёт")->applyButton("Добавить")->closeButton("Отмена"),
 
