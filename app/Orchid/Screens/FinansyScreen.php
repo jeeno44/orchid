@@ -5,6 +5,7 @@ namespace App\Orchid\Screens;
 use App\Models\Finans;
 use App\Models\Task;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\DateTimer;
@@ -76,8 +77,14 @@ class FinansyScreen extends Screen
         ];
     }
 
-    public function setfin ()
+    public function setfin (Request $request)
     {
-        dump("OK");
+        Finans::create([
+            "date" => now()->toDateString(),
+            "type" => "rash",
+            "name" => $request->name,
+            "count" => 1,
+            "price" => 480,
+        ]);
     }
 }
