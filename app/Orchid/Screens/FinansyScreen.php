@@ -25,8 +25,6 @@ class FinansyScreen extends Screen
 
         return [
             "finans" => Finans::all(),
-//            "finans" => Task::all()
-//            "fins" => Finans::orderBy("id
         ];
     }
 
@@ -64,10 +62,10 @@ class FinansyScreen extends Screen
         return [
             Layout::table('finans',[
                 TD::make('id'),
-                /*
                 TD::make('date')->sort()->filter(),
                 TD::make('name')->sort()->filter(),
-                TD::make('price')->sort()->filter(),*/
+                TD::make('type')->sort()->filter(),
+                TD::make('price')->sort()->filter(),
             ]),
 
         ];
