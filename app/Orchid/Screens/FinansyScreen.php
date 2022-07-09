@@ -67,10 +67,6 @@ class FinansyScreen extends Screen
                 TD::make('name')->sort()->filter(),
                 TD::make('price')->sort()->filter(),*/
             ]),
-            /*Layout::modal("appendTask",Layout::rows([
-                Input::make('task')->required()->type("text")->title('Задание'),
-                DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
-            ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),*/
 
         ];
     }
