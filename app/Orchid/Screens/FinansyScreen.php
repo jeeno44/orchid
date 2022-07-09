@@ -24,7 +24,8 @@ class FinansyScreen extends Screen
     {
 
         return [
-            "finans" => Task::all()
+            "finans" => Finans::all(),
+//            "finans" => Task::all()
 //            "fins" => Finans::orderBy("id
         ];
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Screen\AsSource;
 
 class Finans extends Model
 {
@@ -17,5 +18,5 @@ class Finans extends Model
         "price",
     ];
 
-    use HasFactory;
+    use HasFactory,AsSource;
 }
