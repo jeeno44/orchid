@@ -57,6 +57,8 @@ class FinansyScreen extends Screen
      */
     public function layout(): iterable
     {
+        dump("fins");
+
         return [
             Layout::table('fins',[
                 //TD::make('id'),
