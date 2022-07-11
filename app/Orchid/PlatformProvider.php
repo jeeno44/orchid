@@ -29,11 +29,14 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
             Menu::make('Задания')
-            ->icon('list')
+            ->icon('task')
             ->route("platform.tasks"),
             Menu::make('Учёт финансов')
             ->icon('list')
             ->route("platform.fins"),
+            Menu::make('Текущая Вахта')
+            ->icon('table')
+            ->route("my_current_job"),
             Menu::make('Экспорт пользователей')
             ->icon('list')
             ->route("export_users"),
