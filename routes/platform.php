@@ -61,7 +61,7 @@ Route::screen('fins', \App\Orchid\Screens\FinansyScreen::class)
     ->name('platform.fins');
 
 // Рабочий табель
-Route::screen('jobs', \App\Orchid\Screens\FinansyScreen::class)
+Route::screen('jobs', \App\Orchid\Screens\JobScreen::class)
     ->name('my_current_job');
 
 // Platform > System > Users > Create
