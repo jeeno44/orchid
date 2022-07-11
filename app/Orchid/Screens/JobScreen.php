@@ -28,6 +28,8 @@ class JobScreen extends Screen
 </table>
 >>>";
 
+        $table = explode("\n",$table);
+
         return [
             "jobs" => $table
         ];
