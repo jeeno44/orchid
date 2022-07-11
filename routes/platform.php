@@ -60,6 +60,10 @@ Route::screen('tasks', \App\Orchid\Screens\TasksScreen::class)
 Route::screen('fins', \App\Orchid\Screens\FinansyScreen::class)
     ->name('platform.fins');
 
+// Рабочий табель
+Route::screen('jobs', \App\Orchid\Screens\FinansyScreen::class)
+    ->name('my_current_job');
+
 // Platform > System > Users > Create
 Route::screen('users/create', UserEditScreen::class)
     ->name('platform.systems.users.create')
