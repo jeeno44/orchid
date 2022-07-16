@@ -80,7 +80,7 @@ class UserProfileScreen extends Screen
                 ),
 
             Layout::block(UserEditLayout::class)
-                ->title(__('Profile Information'))
+                ->title(__('Append And Edit Telegram'))
                 ->description(__("Update your account's profile information and email address."))
                 ->commands(
                     Button::make(__('Save'))
