@@ -79,6 +79,16 @@ class UserProfileScreen extends Screen
                         ->method('save')
                 ),
 
+            Layout::block(UserEditLayout::class)
+                ->title(__('Profile Information'))
+                ->description(__("Update your account's profile information and email address."))
+                ->commands(
+                    Button::make(__('Save'))
+                        ->type(Color::DEFAULT())
+                        ->icon('check')
+                        ->method('save')
+                ),
+
             Layout::block(ProfilePasswordLayout::class)
                 ->title(__('Update Password'))
                 ->description(__('Ensure your account is using a long, random password to stay secure.'))
