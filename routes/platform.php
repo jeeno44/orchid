@@ -57,7 +57,7 @@ Route::screen('tasks', \App\Orchid\Screens\TasksScreen::class)
     ->name('platform.tasks');
 
 // Фильмы и сеиралы
-Route::screen('films', \App\Orchid\Screens\TasksScreen::class)
+Route::screen('films', \App\Orchid\Screens\MoviesScreen::class)
     ->name('platform.films');
 
 // Учёт финансов
