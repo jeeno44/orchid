@@ -106,6 +106,7 @@ return Link::make($task->id)
                     return $dt->format("d.m.Y H:i");
                 }),
             ]),
+
             Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
                 DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),

@@ -2,7 +2,11 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\Film;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Screen;
+use Orchid\Screen\TD;
+use Orchid\Support\Facades\Layout;
 
 class MoviesScreen extends Screen
 {
@@ -13,7 +17,9 @@ class MoviesScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            "films" => Film::orderBy("id")->paginate()
+        ];
     }
 
     /**
@@ -23,7 +29,7 @@ class MoviesScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'MoviesScreen';
+        return 'Фильмы и сериалы';
     }
 
     /**
@@ -33,7 +39,10 @@ class MoviesScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            //ModalToggle::make("Редактировать задание")->modal("editTask")->method("edittask"),
+            //ModalToggle::make("Добавить задание")->modal("appendTask")->method("settask"),
+        ];
     }
 
     /**
@@ -43,6 +52,14 @@ class MoviesScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::table("films",[
+                TD::make("id"),
+                TD::make("name"),
+                TD::make("year"),
+                TD::make("type"),
+                TD::make("watched"),
+            ])
+        ];
     }
 }
