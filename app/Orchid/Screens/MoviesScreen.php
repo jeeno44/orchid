@@ -55,10 +55,12 @@ class MoviesScreen extends Screen
         return [
             Layout::table("films",[
                 TD::make("id"),
-                TD::make("name"),
-                TD::make("year"),
-                TD::make("type"),
-                TD::make("watched"),
+                TD::make("name","Имя"),
+                TD::make("year","Год"),
+                TD::make("type","Тип"),
+                TD::make("watched","Просмотрено")->render(function (Film $film){
+                    return $film->watched === 0 ? "Просмотрено" : "Не просмотрено";
+                })
             ])
         ];
     }
