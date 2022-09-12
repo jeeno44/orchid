@@ -59,7 +59,7 @@ class MoviesScreen extends Screen
                 TD::make("year","Год"),
                 TD::make("type","Тип"),
                 TD::make("watched","Просмотрено")->render(function (Film $film){
-                    return $film->watched === 0 ? "Просмотрено" : "Не просмотрено";
+                    return $film->watched === 0 ? "Не просмотрено" : "Просмотрено";
                 })
             ])
         ];
