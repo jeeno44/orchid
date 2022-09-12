@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('finans', function (Blueprint $table) {
+        Schema::create('films', function (Blueprint $table) {
             $table->id();
-            $table->date("date")->nullable(false);
+            $table->string('name')->nullable(false);
+            $table->smallInteger('year')->nullable(false);
             $table->string("type")->nullable(false);
-            $table->string("name")->nullable(false);
-            $table->smallInteger("count")->default(1);
-            $table->integer("price")->nullable(false);
+            $table->smallInteger("watched")->nullable(false);
             $table->timestamp("created_at")->nullable(false)->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp("updated_at")->nullable(false)->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('finansy');
+        Schema::dropIfExists('films');
     }
 };

@@ -2,11 +2,9 @@
 
 namespace App\Orchid\Screens;
 
-use Orchid\Screen\TD;
-use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Screen;
 
-class JobScreen extends Screen
+class MoviesScreen extends Screen
 {
     /**
      * Query data.
@@ -15,24 +13,7 @@ class JobScreen extends Screen
      */
     public function query(): iterable
     {
-        $table = "<<<
- <table>
-<th>ID</th>
-<th>NAME</th>
-<th>DAY</th>
-<tr>
-<td>1</td>
-<td>Job</td>
-<td>Monday</td>
-</tr>
-</table>
->>>";
-
-        $table = explode("\n",$table);
-
-        return [
-            "jobs" => $table
-        ];
+        return [];
     }
 
     /**
@@ -42,7 +23,7 @@ class JobScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'JobScreen';
+        return 'MoviesScreen';
     }
 
     /**
@@ -62,10 +43,6 @@ class JobScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [
-            Layout::table("jobs",[
-                TD::make("id"),
-            ])
-        ];
+        return [];
     }
 }

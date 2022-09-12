@@ -6,6 +6,7 @@ namespace App\Orchid\Screens\User;
 
 use App\Orchid\Layouts\User\ProfilePasswordLayout;
 use App\Orchid\Layouts\User\UserEditLayout;
+use App\Orchid\Layouts\User\UserTelegramLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -71,6 +72,16 @@ class UserProfileScreen extends Screen
         return [
             Layout::block(UserEditLayout::class)
                 ->title(__('Profile Information'))
+                ->description(__("Update your account's profile information and email address."))
+                ->commands(
+                    Button::make(__('Save'))
+                        ->type(Color::DEFAULT())
+                        ->icon('check')
+                        ->method('save')
+                ),
+
+            Layout::block(UserTelegramLayout::class)
+                ->title(__('Append And Edit Telegram'))
                 ->description(__("Update your account's profile information and email address."))
                 ->commands(
                     Button::make(__('Save'))
