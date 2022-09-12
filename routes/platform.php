@@ -56,6 +56,10 @@ Route::screen('users/{user}/edit', UserEditScreen::class)
 Route::screen('tasks', \App\Orchid\Screens\TasksScreen::class)
     ->name('platform.tasks');
 
+// Фильмы и сеиралы
+Route::screen('films', \App\Orchid\Screens\TasksScreen::class)
+    ->name('platform.films');
+
 // Учёт финансов
 Route::screen('fins', \App\Orchid\Screens\FinansyScreen::class)
     ->name('platform.fins');

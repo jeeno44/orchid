@@ -31,6 +31,9 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Задания')
             ->icon('task')
             ->route("platform.tasks"),
+            Menu::make('Фильмы и Сериалы')
+            ->icon('video')
+            ->route("platform.films"),
             Menu::make('Учёт финансов')
             ->icon('list')
             ->route("platform.fins"),
