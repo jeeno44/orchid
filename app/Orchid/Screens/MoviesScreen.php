@@ -44,7 +44,7 @@ class MoviesScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            //ModalToggle::make("Редактировать задание")->modal("editTask")->method("edittask"),
+            ModalToggle::make("Редактировать фильм или сериал")->modal("editMovie")->method("editmovie"),
             ModalToggle::make("Добавить фильм или сериал")->modal("appendMovie")->method("setmovie"),
         ];
     }
@@ -58,7 +58,7 @@ class MoviesScreen extends Screen
     {
         return [
             Layout::table("films",[
-                TD::make("id")->width(50),
+                TD::make("id")->width(90),
                 TD::make("name","Имя"),
                 TD::make("year","Год"),
                 TD::make("type","Тип")->render(function (Film $film){
@@ -79,15 +79,18 @@ class MoviesScreen extends Screen
                     '0' => 'Не посмотрено',
                     '1' => 'Посмотрено',
                 ]),
-            ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
+            ]))->title("Добавление фильма или сериала")->applyButton("Добавить")->closeButton("Отмена"),
+            Layout::modal("editMovie",Layout::rows([
+                Input::make("film.id")->type("hidden"),
+                Input::make("film.name"),
+                Input::make("film.year"),
+            ]))->async("asyncGetFilm")
+                //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
         ];
     }
 
     public function setmovie (Request $request)
     {
-        //echo "setmovie";
-        //dd($request->all());
-
         $rules=[
             'name' => ['required','min:5'],
             'year' => ['required','min:4','max:4']
@@ -98,5 +101,23 @@ class MoviesScreen extends Screen
         Film::create($request->all());
 
         //return view("setmovie",compact(""));
+    }
+
+    public function editmovie (Request $request)
+    {
+        Film::where("id",$request->film["id"])->update([
+            "id" => $request->film["id"],
+            "name" => $request->film["name"],
+            "year" => $request->film["year"],
+            "type" => $request->film["type"],
+            "watched" => $request->film["watched"],
+        ]);
+    }
+
+    public function asyncGetFilm (Film $film):array
+    {
+        return [
+            "film" => $film,
+        ];
     }
 }

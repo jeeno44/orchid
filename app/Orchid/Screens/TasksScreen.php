@@ -136,41 +136,16 @@ return Link::make($task->id)
         ]);
 
         Toast::info("Задача успешно добавлена");
-
-        //return redirect()->route('platform.tasks');
-        //return view("settask",compact(""));
     }
 
     public function edittask (Request $request)
     {
-//        dump($request->id);
-//        dump($request->task['id']);
-//        dump($request->task['task']);
-//        dump($request->task['datetime']);
-        //dd($request->except('_token'));
-        /*$rules=[
-            'id'=>['required'],
-            'task'=>['required','min:5'],
-            'datetime'=>['required'],
-        ];
-
-        $this->validate($request,$rules);*/
-
         Task::where("id",$request->task['id'])->update([
             "id" => $request->task["id"],
             "task" => $request->task["task"],
             "datetime" => $request->task["datetime"],
             "status" => "active",
         ]);
-
-        //return redirect()->back();
-
-        //dd($request->except('_token'));
-        //$file = new File($request->file('photo'));
-        //$attachment = $file->load();
-        //dump($request->proto);
-        //dd($request->file("proto"));
-        //return view("edittask",compact(""));
     }
 
     public function asyncGetTask (Task $task): array
