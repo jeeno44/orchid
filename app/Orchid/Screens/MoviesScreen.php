@@ -97,6 +97,10 @@ class MoviesScreen extends Screen
                     'movie' => 'Фильм',
                     'tv_show' => 'Сериал',
                 ]),
+                Select::make("film.watched")->options([
+                    '0' => 'Не посмотрено',
+                    '1' => 'Посмотрено',
+                ]),
             ]))->async("asyncGetFilm")
                 //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
         ];
