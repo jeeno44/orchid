@@ -85,8 +85,16 @@ class MoviesScreen extends Screen
 
     public function setmovie (Request $request)
     {
-        echo "setmovie";
-        dd($request->all());
+        //echo "setmovie";
+        //dd($request->all());
+
+        $rules=[
+            'name' => ['required','min:5'],
+            'year' => ['required','min:4','max:4']
+        ];
+
+        $this->validate($request,$rules);
+
         Film::create($request->all());
 
         //return view("setmovie",compact(""));
