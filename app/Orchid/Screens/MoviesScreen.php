@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Film;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
@@ -88,7 +88,7 @@ class MoviesScreen extends Screen
         echo "setmovie";
         dd($request->all());
         Film::create($request->all());
-        
+
         //return view("setmovie",compact(""));
     }
 }
