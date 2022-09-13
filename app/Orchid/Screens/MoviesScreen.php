@@ -66,7 +66,16 @@ class MoviesScreen extends Screen
                 }),
                 TD::make("watched","Просмотрено")->render(function (Film $film){
                     return $film->watched === 0 ? "Не просмотрено" : "Просмотрено";
-                })
+                }),
+                TD::make('Edit')->render(function(Film $film){
+                    return ModalToggle::make("Редакторовать")
+                        ->modal("editMovie")
+                        ->method("editmovie")
+                        ->modalTitle("Редактировать задание ".$film->name)
+                        ->asyncParameters([
+                            'film' => $film->id
+                        ]);
+                }),
             ]),
             Layout::modal("appendMovie",Layout::rows([
                 Input::make('name')->required()->type("text")->title('Имя'),
