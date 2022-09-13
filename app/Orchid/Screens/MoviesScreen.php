@@ -69,7 +69,7 @@ class MoviesScreen extends Screen
                 })
             ]),
             Layout::modal("appendMovie",Layout::rows([
-                Input::make('film')->required()->type("text")->title('Имя'),
+                Input::make('name')->required()->type("text")->title('Имя'),
                 Input::make('year')->required()->type("text")->title('Год'),
                 Select::make("type")->options([
                     'movie' => 'Фильм',
