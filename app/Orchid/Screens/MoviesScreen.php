@@ -93,6 +93,10 @@ class MoviesScreen extends Screen
                 Input::make("film.id")->type("hidden"),
                 Input::make("film.name"),
                 Input::make("film.year"),
+                Select::make("film.type")->options([
+                    'movie' => 'Фильм',
+                    'tv_show' => 'Сериал',
+                ]),
             ]))->async("asyncGetFilm")
                 //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
         ];
