@@ -76,8 +76,8 @@ class MoviesScreen extends Screen
                     'tv_show' => 'Сериал',
                 ]),
                 Select::make("watched")->options([
-                    '1' => 'Посмотрено',
                     '0' => 'Не посмотрено',
+                    '1' => 'Посмотрено',
                 ]),
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
         ];
