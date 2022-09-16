@@ -77,7 +77,12 @@ class MoviesScreen extends Screen
                 TD::make("name","Имя"),
                 TD::make("year","Год"),
                 TD::make("type","Тип")->render(function (Film $film){
-                    return $film->type === "movie" ? "Фильм" : "Сериал";
+                    //return $film->type === "movie" ? "Фильм" : "Сериал";
+                    switch ($film->type){
+                        case "movie": return "Фильм" ; break;
+                        case "tv_show": return "Сериал" ; break;
+                        case "short_movie": return "Короткометражка" ; break;
+                    }
                 }),
                 TD::make("watched","Просмотрено")->render(function (Film $film){
                     return $film->watched === 0 ? "Не просмотрено" : "Просмотрено";
@@ -98,6 +103,7 @@ class MoviesScreen extends Screen
                 Select::make("type")->options([
                     'movie' => 'Фильм',
                     'tv_show' => 'Сериал',
+                    'short_movie' => 'Короткометражка',
                 ]),
                 Select::make("watched")->options([
                     '0' => 'Не посмотрено',
@@ -111,6 +117,7 @@ class MoviesScreen extends Screen
                 Select::make("film.type")->options([
                     'movie' => 'Фильм',
                     'tv_show' => 'Сериал',
+                    'short_movie' => 'Короткометражка',
                 ]),
                 Select::make("film.watched")->options([
                     '0' => 'Не посмотрено',
