@@ -37,7 +37,7 @@ class MoviesScreen extends Screen
         });
 
         return [
-            "films" => Film::orderBy("id")->paginate()
+            "films" => Film::orderBy("id")->paginate(30)
         ];
     }
 
