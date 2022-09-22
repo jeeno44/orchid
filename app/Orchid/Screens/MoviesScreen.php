@@ -81,6 +81,7 @@ class MoviesScreen extends Screen
                     switch ($film->type){
                         case "movie": return "Фильм" ; break;
                         case "tv_show": return "Сериал" ; break;
+                        case "cartoon": return "Мультфильм" ; break;
                         case "short_movie": return "Короткометражка" ; break;
                     }
                 }),
@@ -103,6 +104,7 @@ class MoviesScreen extends Screen
                 Select::make("type")->options([
                     'movie' => 'Фильм',
                     'tv_show' => 'Сериал',
+                    'cartoon' => 'Мультфильм',
                     'short_movie' => 'Короткометражка',
                 ]),
                 Select::make("watched")->options([
@@ -117,6 +119,7 @@ class MoviesScreen extends Screen
                 Select::make("film.type")->options([
                     'movie' => 'Фильм',
                     'tv_show' => 'Сериал',
+                    'cartoon' => 'Мультфильм',
                     'short_movie' => 'Короткометражка',
                 ]),
                 Select::make("film.watched")->options([
