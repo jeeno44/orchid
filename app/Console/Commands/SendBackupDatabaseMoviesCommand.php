@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Mail;
 
 class SendBackupDatabaseMoviesCommand extends Command
 {
@@ -38,7 +39,7 @@ class SendBackupDatabaseMoviesCommand extends Command
 
         if ($red_value == null){
             echo "НЕТ ЗНАЧЕНИЯ\n";
-            echo "Установим значение из базы данных";
+            echo "Установим значение из базы данных\n";
 
             Redis::set("films",$films->count());
 	    }
@@ -49,6 +50,11 @@ class SendBackupDatabaseMoviesCommand extends Command
 		    if( Redis::get("films") != $films->count()){
 			    echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
+                Mail::send(["tesxt" => "mail"],["name" => "John"],function ($message){
+                    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
+                    $message->from(env("MAIL_FROM_ADDRESS",""),"Jeeno Left Blog");
+                });
+                //
 			    //mail("jeep456@yandex.ru","Subject","Hello");
 			    echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
             }
