@@ -28,7 +28,8 @@ class SendBackupDatabaseMoviesCommand extends Command
      */
     public function handle()
     {
-        Redis::set("name","SWIFT");
+//        Redis::set("name","SWIFT");
+
 
         return 0;
     }
