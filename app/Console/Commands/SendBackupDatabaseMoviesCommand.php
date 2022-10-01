@@ -50,7 +50,7 @@ class SendBackupDatabaseMoviesCommand extends Command
 		    if( Redis::get("films") != $films->count()){
 			    echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
-                Mail::send("THIS MESSAGE","Subject",function ($message){
+                Mail::send("THIS MESSAGE",["subject" => "Subject"],function ($message){
                     $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
                     $message->from(env("MAIL_FROM_ADDRESS",""),"Jeeno Left Blog");
                 });
