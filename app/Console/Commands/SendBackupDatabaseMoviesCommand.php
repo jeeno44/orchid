@@ -31,11 +31,37 @@ class SendBackupDatabaseMoviesCommand extends Command
     {
         //Redis::set("name","SWIFT");
 
-        //dump(Redis::get("name"));
+	$red_value = Redis::get("films");
+        
+	//dump($red_value);
 
         $films = DB::table("films")->orderBy("id")->get(["id","name","year"]);
 
-        dump($films);
+        //dump($films->count());
+
+	if($red_value == null){
+		echo "НЕТ ЗНАЧЕНИЯ\n";
+		echo "Установим значение из базы данных";
+		dump($films->count());
+		Redis::set("films",$films->count());
+	}
+	else{
+	//	echo "Значение $films->count()";
+		echo "Значение из редиски - ".Redis::get("films")."\n";
+		echo "Значение из базы - ".$films->count()."\n";
+		
+		if( Redis::get("films") != $films->count()){
+			echo "ДЕЛАЕМ БЭКАП \n";
+			// ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
+			//mail("jeep456@yandex.ru","Subject","Hello");
+			echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
+		}
+		else{
+			echo "Ничего не делаем \n";
+		}
+	}
+	
+	//echo $films->count();
 
         return 0;
     }
