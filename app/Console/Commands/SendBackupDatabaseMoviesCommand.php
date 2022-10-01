@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 
 class SendBackupDatabaseMoviesCommand extends Command
@@ -28,8 +29,13 @@ class SendBackupDatabaseMoviesCommand extends Command
      */
     public function handle()
     {
-//        Redis::set("name","SWIFT");
+        //Redis::set("name","SWIFT");
 
+        //dump(Redis::get("name"));
+
+        $films = DB::table("films")->orderBy("id")->get(["id","name","year"]);
+
+        dump($films);
 
         return 0;
     }
