@@ -54,7 +54,7 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
                 $filmsFromBD = Film::get(["id","name","year","type"]);
                 Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
-                Storage::append("films.json",json_encode(["Всего фильмов" => $films->count()]));
+                Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
                 //Mail::send("email.message",["subject" => "Subject"],function ($message){
                 //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
