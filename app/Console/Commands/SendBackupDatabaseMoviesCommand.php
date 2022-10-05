@@ -54,6 +54,7 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
                 $filmsFromBD = Film::get(["id","name","year","type"]);
                 Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::append("films.json",json_encode(["Всего фильмов" => $films->count()]));
 
                 //Mail::send("email.message",["subject" => "Subject"],function ($message){
                 //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
@@ -61,7 +62,8 @@ class SendBackupDatabaseMoviesCommand extends Command
                 //});
                 //
 			    //mail("jeep456@yandex.ru","Subject","Hello");
-			    echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
+
+                //echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
                 Redis::set("films",$films->count());
             }
             else{
