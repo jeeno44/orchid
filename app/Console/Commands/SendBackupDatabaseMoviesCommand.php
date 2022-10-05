@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Film;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class SendBackupDatabaseMoviesCommand extends Command
 {
@@ -48,12 +50,15 @@ class SendBackupDatabaseMoviesCommand extends Command
 		    echo "Значение из базы - ".$films->count()."\n";
 
 		    if( Redis::get("films") != $films->count()){
-			    echo "ДЕЛАЕМ БЭКАП \n";
+			    //echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
-                Mail::send("email.message",["subject" => "Subject"],function ($message){
-                    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
-                    $message->from(env("MAIL_FROM_ADDRESS",""),"Jeeno Left Blog");
-                });
+                $filmsFromBD = Film::get(["id","name","year","type"]);
+                Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE));
+
+                //Mail::send("email.message",["subject" => "Subject"],function ($message){
+                //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
+                //    $message->from(env("MAIL_FROM_ADDRESS",""),"Jeeno Left Blog");
+                //});
                 //
 			    //mail("jeep456@yandex.ru","Subject","Hello");
 			    echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
