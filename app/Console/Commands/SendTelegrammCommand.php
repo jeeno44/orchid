@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use App\Models\Task;
 use Mockery\Exception;
@@ -29,7 +30,16 @@ class SendTelegrammCommand extends Command
      */
     public function handle()
     {
+        $dayOfTheWeek = Carbon::now()->dayOfWeek;
+
         $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
+        //Carbon::now()->toTimeString();
+
+        if ($dayOfTheWeek != 0 and Carbon::now()->toTimeString() == "18:00:00"){
+            $msg = "Отчёт за день";
+            $url = "https://api.telegram.org/bot".$TOKEN."/sendMessage?text=".$msg."&chat_id=381581718";
+            file_get_contents($url);
+        }
 
         try{
             $task = Task::where('status','active')->OrderBy('datetime')->first();
@@ -61,5 +71,6 @@ class SendTelegrammCommand extends Command
         else{
             return $this->info("ПОКА РАНО");
         }
+
     }
 }
