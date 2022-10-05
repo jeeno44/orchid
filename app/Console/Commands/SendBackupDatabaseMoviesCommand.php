@@ -62,6 +62,7 @@ class SendBackupDatabaseMoviesCommand extends Command
                 //
 			    //mail("jeep456@yandex.ru","Subject","Hello");
 			    echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
+                Redis::set("films",$films->count());
             }
             else{
 			    echo "Ничего не делаем \n";
