@@ -53,8 +53,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    //echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
                 $filmsFromBD = Film::get(["id","name","year","type"]);
-                Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
-                Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                //Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                //Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
 //                $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
@@ -62,32 +62,33 @@ class SendBackupDatabaseMoviesCommand extends Command
                 $chitID = "381581718";
                 $token = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
-                $filename = Storage::get("films.json");
+                //$filename = Storage::get("films.json");
 
                 // Create CURL object
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot".$token."/sendDocument?chat_id=".$chitID);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_POST, 1);
+//                $ch = curl_init();
+//                curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot".$token."/sendDocument?chat_id=".$chitID);
+//                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//                curl_setopt($ch, CURLOPT_POST, 1);
 
                 // Create CURLFile
-                $finfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $filename);
-                $cFile = new CURLFile($filename, $finfo);
+                //$finfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $filename);
+                //$cFile = new CURLFile($filename, $finfo);
 
                 // Add CURLFile to CURL request
-                curl_setopt($ch, CURLOPT_POSTFIELDS, [
+                /*curl_setopt($ch, CURLOPT_POSTFIELDS, [
                     "document" => $cFile
-                ]);
+                ]);*/
 
                 // Call
-                curl_exec($ch);
+//                curl_exec($ch);
                 //$result = curl_exec($ch);
 
                 // Show result and close curl
 //                var_dump($result);
-                curl_close($ch);
+//                curl_close($ch);
 
-                //$url = "https://api.telegram.org/bot".$TOKEN."/&chat_id=381581718";
+                //$url = "https://api.telegram.org/bot".$token."/&chat_id=381581718";
+                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT)."&chat_id=381581718";
                 //file_get_contents($url);
                 //Mail::send("email.message",["subject" => "Subject"],function ($message){
                 //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
