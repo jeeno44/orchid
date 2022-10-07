@@ -89,7 +89,7 @@ class SendBackupDatabaseMoviesCommand extends Command
 //                curl_close($ch);
 
                 //$url = "https://api.telegram.org/bot".$token."/&chat_id=381581718";
-                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT)."&chat_id=381581718";
+                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE)."&chat_id=381581718";
                 file_get_contents($url);
                 //Mail::send("email.message",["subject" => "Subject"],function ($message){
                 //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
