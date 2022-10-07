@@ -52,7 +52,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 		    if( Redis::get("films") != $films->count()){
 			    //echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
-                $filmsFromBD = Film::get(["id","name","year","type"]);
+//                $filmsFromBD = Film::get(["id","name","year","type"]);
+                $filmsFromBD = Film::get(["name"]);
                 //Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
                 //Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
