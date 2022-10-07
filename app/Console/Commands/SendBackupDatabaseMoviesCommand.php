@@ -89,7 +89,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 //                curl_close($ch);
 
                 //$url = "https://api.telegram.org/bot".$token."/&chat_id=381581718";
-                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE)."&chat_id=381581718";
+//                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE)."&chat_id=381581718";
+                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=БЕКАП_ФИЛЬМОВ_(".$films->count().")&chat_id=381581718";
                 file_get_contents($url);
                 //Mail::send("email.message",["subject" => "Subject"],function ($message){
                 //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
@@ -99,7 +100,7 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    //mail("jeep456@yandex.ru","Subject","Hello");
 
                 //echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
-                Redis::set("films",($films->count()+1));
+                Redis::set("films",$films->count());
             }
             else{
 			    echo "Ничего не делаем \n";
