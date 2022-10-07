@@ -53,7 +53,7 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    //echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
 //                $filmsFromBD = Film::get(["id","name","year","type"]);
-                $filmsFromBD = Film::get(["name","year","type"]);
+                $filmsFromBD = Film::get(["id","name","year","type"]);
                 //Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
                 //Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
@@ -89,8 +89,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 //                curl_close($ch);
 
                 //$url = "https://api.telegram.org/bot".$token."/&chat_id=381581718";
-//                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE)."&chat_id=381581718";
-                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=БЕКАП_ФИЛЬМОВ_(".$films->count().")&chat_id=381581718";
+                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE)."&chat_id=381581718";
+//                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=БЕКАП_ФИЛЬМОВ_(".$films->count().")&chat_id=381581718";
                 file_get_contents($url);
                 //Mail::send("email.message",["subject" => "Subject"],function ($message){
                 //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
