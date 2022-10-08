@@ -53,15 +53,19 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    //echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
 //                $filmsFromBD = Film::get(["id","name","year","type"]);
-                $filmsFromBD = Film::get(["id","name","year","type"]);
+                $filmsFromBD = Film::orderBy("id")->get(["id","name","year","type"]);
                 //Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
                 //Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
 //                $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
 
-                $chitID = "381581718";
-                $token = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
+//                $chitID = "381581718"; // orchid_telega_bot
+                $chitID = ""; // orchid_films_telega_bot
+                //$token = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
+                $token = "5632292733:AAHXN2dpq-gNgPcuJsteRtgynbF5LuCB7gY";
+                //https://api.telegram.org/bot<5632292733:AAHXN2dpq-gNgPcuJsteRtgynbF5LuCB7gY>/getUpdates
+
 
                 //$filename = Storage::get("films.json");
 
