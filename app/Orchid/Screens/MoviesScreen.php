@@ -98,8 +98,8 @@ class MoviesScreen extends Screen
                             'film' => $film->id
                         ]);
                 }),
-                TD::make("dels","Удал")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
-                    return Link::make($film->id)
+                TD::make("dels","Del")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
+                    return Link::make("del")
                         ->href("delfilm/".$film->id);
                 })
 //                TD::make('id','Delete')->width(100)->align(TD::ALIGN_RIGHT)->render(function(Task $task){
