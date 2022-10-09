@@ -142,8 +142,11 @@ class MoviesScreen extends Screen
                     '0' => 'Не посмотрено',
                     '1' => 'Посмотрено',
                 ]),
-            ]))->async("asyncGetFilm")
+            ]))->async("asyncGetFilm"),
                 //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
+            Layout::modal("deleteMovies",Layout::rows([
+                Link::make("Удалить")->href("delfilm/")
+            ])),
         ];
     }
 
