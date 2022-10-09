@@ -142,7 +142,7 @@ class MoviesScreen extends Screen
     public function setmovie (Request $request)
     {
         $rules=[
-            'name' => ['required','min:5'],
+            'name' => ['required','min:4'],
             'year' => ['required','min:4','max:4']
         ];
 
