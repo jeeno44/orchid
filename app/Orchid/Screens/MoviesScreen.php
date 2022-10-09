@@ -101,10 +101,10 @@ class MoviesScreen extends Screen
                         ]);
                 }),
                 TD::make("Dels")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
-                    return ModalToggle::make("Удалить")
+                    return ModalToggle::make("Удалить - ".$film->id)
                         ->modal("deleteMovie")
                         ->method("delmovie")
-                        ->modalTitle("Удалить - ".$film->id)
+                        ->modalTitle("Удалить")
                         ->asyncParameters([
                             "film" => $film->id
                         ]);
