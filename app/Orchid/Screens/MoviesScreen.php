@@ -5,6 +5,7 @@ namespace App\Orchid\Screens;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
+use Orchid\Support\Facades\Alert;
 use Request as Rq;
 use Illuminate\Pagination\Paginator;
 use Orchid\Screen\Actions\ModalToggle;
@@ -62,6 +63,7 @@ class MoviesScreen extends Screen
         return [
             ModalToggle::make("Редактировать фильм или сериал")->modal("editMovie")->method("editmovie"),
             ModalToggle::make("Добавить фильм или сериал")->modal("appendMovie")->method("setmovie"),
+            ModalToggle::make("Удалить")->modal("deleteMovie")->method("delmovie"),
         ];
     }
 
@@ -98,10 +100,19 @@ class MoviesScreen extends Screen
                             'film' => $film->id
                         ]);
                 }),
-                TD::make("dels","Del")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
+                TD::make("Dels")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
+                    return ModalToggle::make("Удалить")
+                        ->modal("deleleMovie")
+                        ->method("delmovie")
+                        ->modalTitle("Удалить - ".$film->id)
+                        ->asyncParameters([
+                            "film" => $film->id
+                        ]);
+                })
+                /*TD::make("dels","Del")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
                     return Link::make("del - ".$film->id)
                         ->href("delfilm/".$film->id);
-                })
+                })*/
             ]),
             Layout::modal("appendMovie",Layout::rows([
                 Input::make('name')->required()->type("text")->title('Имя'),
@@ -159,6 +170,11 @@ class MoviesScreen extends Screen
             "type" => $request->film["type"],
             "watched" => $request->film["watched"],
         ]);
+    }
+
+    public function delmovie (Film $film)
+    {
+        Alert::message("DELETE FILM");
     }
 
     public function asyncGetFilm (Film $film):array
