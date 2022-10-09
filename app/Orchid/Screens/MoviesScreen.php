@@ -102,9 +102,6 @@ class MoviesScreen extends Screen
                     return Link::make("del")
                         ->href("delfilm/".$film->id);
                 })
-//                TD::make('id','Delete')->width(100)->align(TD::ALIGN_RIGHT)->render(function(Task $task){
-//                    return Link::make($task->id)
-//                        ->href('deltask/'.$task->id);
             ]),
             Layout::modal("appendMovie",Layout::rows([
                 Input::make('name')->required()->type("text")->title('Имя'),
