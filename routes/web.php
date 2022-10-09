@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\FilmsController;
 use Illuminate\Http\Client\Request as REQ;
 
 /*
@@ -26,6 +27,8 @@ Route::get('/', function () {
 });*/
 
 Route::get('/admin/deltask/{id}', [TaskController::class, 'deltask']);
+
+Route::get('/admin/delfilm/{id}', [FilmsController::class, 'delfilm']);
 
 Route::get('export',function (){
 

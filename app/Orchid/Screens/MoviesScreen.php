@@ -4,6 +4,7 @@ namespace App\Orchid\Screens;
 
 use App\Models\Film;
 use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Link;
 use Request as Rq;
 use Illuminate\Pagination\Paginator;
 use Orchid\Screen\Actions\ModalToggle;
@@ -97,6 +98,13 @@ class MoviesScreen extends Screen
                             'film' => $film->id
                         ]);
                 }),
+                TD::make("dels","Удал")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
+                    return Link::make($film->id)
+                        ->href("delfilm/".$film->id);
+                })
+//                TD::make('id','Delete')->width(100)->align(TD::ALIGN_RIGHT)->render(function(Task $task){
+//                    return Link::make($task->id)
+//                        ->href('deltask/'.$task->id);
             ]),
             Layout::modal("appendMovie",Layout::rows([
                 Input::make('name')->required()->type("text")->title('Имя'),
