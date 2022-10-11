@@ -124,7 +124,7 @@ return Link::make($task->id)
     public function settask (Request $request)
     {
         $rules=[
-            'task'=>['required','min:5'],
+            'task'=>['required','min:4'],
             'datetime'=>['required'],
         ];
 
