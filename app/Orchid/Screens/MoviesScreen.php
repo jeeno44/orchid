@@ -4,6 +4,7 @@ namespace App\Orchid\Screens;
 
 use App\Models\Film;
 use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Code;
 use Orchid\Support\Facades\Alert;
@@ -148,7 +149,8 @@ class MoviesScreen extends Screen
                 //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
             Layout::modal("deleteMovie",Layout::rows([
 //                Link::make("Удалить")->href("delfilm/film.id")
-                Input::make("DELETE")->type("text")->title("Действительн удалить ?"),
+                //Input::make("DELETE")->type("text")->title("Действительн удалить ?"),
+                Button::make("con")->confirm("Вы уверены ?"),
                 Input::make("film.id")->type('hidden'),
             ]))->title("Удалить фильм")->applyButton("Удалить")->async("asyncGetFilm"),
         ];
