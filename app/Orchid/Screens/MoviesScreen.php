@@ -65,7 +65,7 @@ class MoviesScreen extends Screen
         return [
             ModalToggle::make("Редактировать фильм или сериал")->modal("editMovie")->method("editmovie"),
             ModalToggle::make("Добавить фильм или сериал")->modal("appendMovie")->method("setmovie"),
-            ModalToggle::make("Удалить")->modal("deleteMovie")->method("delmovie"),
+            ModalToggle::make("УдОлить")->modal("deleteMovie")->method("delmovie"),
         ];
     }
 
