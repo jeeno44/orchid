@@ -6,6 +6,7 @@ use App\Models\Film;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Support\Facades\Alert;
+use Orchid\Support\Facades\Toast;
 use Request as Rq;
 use Illuminate\Pagination\Paginator;
 use Orchid\Screen\Actions\ModalToggle;
