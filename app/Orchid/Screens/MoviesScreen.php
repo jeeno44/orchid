@@ -5,6 +5,7 @@ namespace App\Orchid\Screens;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Fields\Code;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Toast;
 use Request as Rq;
@@ -147,7 +148,9 @@ class MoviesScreen extends Screen
                 //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
             Layout::modal("deleteMovie",Layout::rows([
 //                Link::make("Удалить")->href("delfilm/film.id")
-                Layout::rows([]),
+                Layout::rows([
+                    Code::make('code')
+                ]),
             ]))->async("asyncGetFilm"),
         ];
     }
