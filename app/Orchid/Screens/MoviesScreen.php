@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Film;
+use Faker\Provider\Text;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
@@ -150,7 +151,8 @@ class MoviesScreen extends Screen
             Layout::modal("deleteMovie",Layout::rows([
 //                Link::make("Удалить")->href("delfilm/film.id")
                 //Input::make("DELETE")->type("text")->title("Действительн удалить ?"),
-                Button::make("con")->icon('icon-check')->confirm("Вы уверены ?"),
+                //Button::make("con")->icon('icon-check')->confirm("Вы уверены ?"),
+                Text::asciify("SOMETHING"),
                 Input::make("film.id")->type('hidden'),
             ]))->title("Удалить фильм")->applyButton("Удалить")->async("asyncGetFilm"),
         ];
