@@ -152,9 +152,8 @@ class MoviesScreen extends Screen
 //                Link::make("Удалить")->href("delfilm/film.id")
                 //Input::make("DELETE")->type("text")->title("Действительн удалить ?"),
                 //Button::make("con")->icon('icon-check')->confirm("Вы уверены ?"),
-                Text::asciify("SOMETHING"),
                 Input::make("film.id")->type('hidden'),
-            ]))->title("Удалить фильм")->applyButton("Удалить")->async("asyncGetFilm"),
+            ]))->applyButton("Удалить")->async("asyncGetFilm"),
         ];
     }
 
