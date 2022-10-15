@@ -100,7 +100,7 @@ class MoviesScreen extends Screen
                             'film' => $film->id
                         ]);
                 }),
-                /*TD::make("Dels")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
+                TD::make("Dels")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
                     return ModalToggle::make("Удалить - ".$film->id)
                         ->modal("deleteMovie")
                         ->method("delmovie")
@@ -108,11 +108,11 @@ class MoviesScreen extends Screen
                         ->asyncParameters([
                             "film" => $film->id
                         ]);
-                }),*/
-                TD::make("dels","Del")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
+                }),
+                /*TD::make("dels","Del")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
                     return Link::make("del - ".$film->id)
                         ->href("delfilm/".$film->id);
-                })
+                })*/
             ]),
             Layout::modal("appendMovie",Layout::rows([
                 Input::make('name')->required()->type("text")->title('Имя'),
