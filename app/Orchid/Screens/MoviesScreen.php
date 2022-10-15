@@ -144,9 +144,9 @@ class MoviesScreen extends Screen
                 ]),
             ]))->async("asyncGetFilm"),
                 //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
-//            Layout::modal("deleteMovie",Layout::rows([
-//                Link::make("Удалить")->href("delfilm/film.id")
-//            ]))->async("asyncGetFilm"),
+            Layout::modal("deleteMovie",Layout::rows([
+                Link::make("Удалить")->href("delfilm/film.id")
+            ]))->async("asyncGetFilm"),
         ];
     }
 
@@ -177,7 +177,8 @@ class MoviesScreen extends Screen
 
     public function delmovie (Film $film)
     {
-        Alert::message("DELETE FILM");
+        echo "GOOD YEAR";
+        //Alert::message("DELETE FILM");
     }
 
     public function asyncGetFilm (Film $film):array
