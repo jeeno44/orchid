@@ -178,10 +178,10 @@ class MoviesScreen extends Screen
         ]);
     }
 
-    public function delmovie (Film $film)
+    public function delmovie (Request $request)
     {
 //        echo "GOOD YEAR";
-        Toast::info('DELETE THIS MOVIE');
+        Toast::info('DELETE THIS MOVIE - '.$request->film['id']);
         //Alert::message("DELETE FILM");
     }
 
