@@ -149,7 +149,7 @@ class MoviesScreen extends Screen
             Layout::modal("deleteMovie",Layout::rows([
 //                Link::make("Удалить")->href("delfilm/film.id")
                 Input::make("film.id")->type('hidden'),
-            ]))->async("asyncGetFilm"),
+            ]))->title("Удалить фильм film.name")->applyButton("Удалить")->async("asyncGetFilm"),
         ];
     }
 
