@@ -148,7 +148,8 @@ class MoviesScreen extends Screen
                 //->title("Редактирование фильма или сериала")->applyButton("Редактировать")->closeButton("Отмена"),
             Layout::modal("deleteMovie",Layout::rows([
 //                Link::make("Удалить")->href("delfilm/film.id")
-                Input::make("film.id")->type('hidden')->title('Действительно удалить ?'),
+                Input::make("DELETE")->type("text")->title("Действительн удалить ?"),
+                Input::make("film.id")->type('hidden'),
             ]))->title("Удалить фильм")->applyButton("Удалить")->async("asyncGetFilm"),
         ];
     }
