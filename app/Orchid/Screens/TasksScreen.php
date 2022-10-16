@@ -6,6 +6,7 @@ use App\Models\Task;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Group;
+use Orchid\Screen\Fields\Select;
 use Request as Rq;
 use Illuminate\Pagination\Paginator;
 use Orchid\Screen\Actions\ModalToggle;
@@ -117,7 +118,7 @@ return Link::make($task->id)
                 Input::make("task.task"),
 //                Input::make("lask.datetime"),
                 DateTimer::make('task.datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
-                Input::make("task.status")->options([
+                Select::make("task.status")->options([
                     'done' => 'Сделано',
                     'active' => 'Активировать',
                 ]),
