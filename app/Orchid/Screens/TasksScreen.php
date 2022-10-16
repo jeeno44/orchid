@@ -80,7 +80,7 @@ class TasksScreen extends Screen
     {
         return [
             Layout::table('tasks',[
-                TD::make('id')->width(55),
+                TD::make('id')->width(85),
                 TD::make('task')->sort()->filter(),
                 TD::make('datetime')->width(155),
                 TD::make('status')->width(100)->sort(),
