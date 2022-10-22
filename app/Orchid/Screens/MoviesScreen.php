@@ -108,7 +108,7 @@ class MoviesScreen extends Screen
                     return ModalToggle::make("Удалить - ".$film->id)
                         ->modal("deleteMovie")
                         ->method("delmovie")
-                        ->modalTitle("Удалитька ?")
+                        ->modalTitle("ДЕЙСТВИТЕЛЬНО УДАЛИТЬ ?")
                         ->asyncParameters([
                             "film" => $film->id
                         ]);
