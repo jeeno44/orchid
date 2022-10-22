@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Film;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
@@ -54,7 +55,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
 //                $filmsFromBD = Film::get(["id","name","year","type"]);
                 $filmsFromBD = Film::orderBy("id")->get(["id","name","year","type"]);
-                Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                $today = now()->toDateString();
+                Storage::put("films.json (".$today.")",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
                 Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
 //                $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
