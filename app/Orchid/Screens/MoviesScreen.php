@@ -105,10 +105,11 @@ class MoviesScreen extends Screen
                         ]);
                 }),
                 TD::make("Dels")->width(70)->align(TD::ALIGN_RIGHT)->render(function (Film $film){
+
                     return ModalToggle::make("Удалить - ".$film->id)
                         ->modal("deleteMovie")
                         ->method("delmovie")
-                        ->modalTitle("ДЕЙСТВИТЕЛЬНО УДАЛИТЬ film.name ?")
+                        ->modalTitle("ДЕЙСТВИТЕЛЬНО УДАЛИТЬ ?")
                         ->asyncParameters([
                             "film" => $film->id
                         ]);
@@ -186,6 +187,7 @@ class MoviesScreen extends Screen
     {
 //        echo "GOOD YEAR";
         Toast::info('DELETE THIS MOVIE - '.$request->film['id']);
+        Film::find($request->film['id'])->delete();
         //Alert::message("DELETE FILM");
     }
 
