@@ -55,9 +55,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
 //                $filmsFromBD = Film::get(["id","name","year","type"]);
                 $filmsFromBD = Film::orderBy("id")->get(["id","name","year","type"]);
-                $today = now()->toDateString();
-                Storage::put("films_".$today.".json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
-                Storage::append("films_".$today.".json",json_encode(["Всего фильмов" => $films->count()],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::append("films.json",json_encode(["Всего фильмов" => $films->count()],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
 //                $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
