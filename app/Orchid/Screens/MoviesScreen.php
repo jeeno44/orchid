@@ -67,7 +67,7 @@ class MoviesScreen extends Screen
         return [
             ModalToggle::make("Редактировать фильм или сериал")->modal("editMovie")->method("editmovie"),
             ModalToggle::make("Добавить фильм или сериал")->modal("appendMovie")->method("setmovie"),
-            ModalToggle::make("УдОлить")->modal("deleteMovie")->method("delmovie"),
+            ModalToggle::make("Удалить")->modal("deleteMovie")->method("delmovie"),
         ];
     }
 
@@ -153,7 +153,7 @@ class MoviesScreen extends Screen
                 //Input::make("DELETE")->type("text")->title("Действительн удалить ?"),
                 //Button::make("con")->icon('icon-check')->confirm("Вы уверены ?"),
                 Input::make("film.id")->type('hidden'),
-            ]))->applyButton("Удалить")->async("asyncGetFilm"),
+            ]))->title("УДАЛЯШКА")->applyButton("Удалить")->async("asyncGetFilm"),
         ];
     }
 
