@@ -54,8 +54,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
 //                $filmsFromBD = Film::get(["id","name","year","type"]);
                 $filmsFromBD = Film::orderBy("id")->get(["id","name","year","type"]);
-                //Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
-                //Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::put("films.json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
 //                $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
@@ -93,14 +93,10 @@ class SendBackupDatabaseMoviesCommand extends Command
 //                curl_close($ch);
 
                 //$url = "https://api.telegram.org/bot".$token."/&chat_id=381581718";
-                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE)."&chat_id=381581718";
+                //###$url = "https://api.telegram.org/bot".$token."/sendMessage?text=".json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE)."&chat_id=381581718";
 //                $url = "https://api.telegram.org/bot".$token."/sendMessage?text=БЕКАП_ФИЛЬМОВ_(".$films->count().")&chat_id=381581718";
-                file_get_contents($url);
-                //Mail::send("email.message",["subject" => "Subject"],function ($message){
-                //    $message->to("jeep456@yandex.ru","Hello From Jeen")->subject("JUST SUBJECT");
-                //    $message->from(env("MAIL_FROM_ADDRESS",""),"Jeeno Left Blog");
-                //});
-                //
+                //file_get_contents($url);
+
 			    //mail("jeep456@yandex.ru","Subject","Hello");
 
                 //echo "После Бэкапа занисываем в РЕДИС новое значение всех фильмов в базе \n";
