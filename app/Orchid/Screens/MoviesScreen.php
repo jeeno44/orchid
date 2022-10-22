@@ -153,7 +153,7 @@ class MoviesScreen extends Screen
                 //Input::make("DELETE")->type("text")->title("Действительн удалить ?"),
                 //Button::make("con")->icon('icon-check')->confirm("Вы уверены ?"),
                 Input::make("film.id")->type('hidden'),
-            ]))->title("УДАЛЯШКА")->applyButton("Удалить")->async("asyncGetFilm"),
+            ]))->title("ДЕЙСТВИТЕЛЬНО УДАЛИТЬ ?")->applyButton("Удалить")->async("asyncGetFilm"),
         ];
     }
 
