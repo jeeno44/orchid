@@ -3,10 +3,11 @@
 # echo "" | mutt -s "Добавлен фильм или сериал" jeep456@yandex.ru -a /home/jeeno/sites/orchid/database/BackUp/films_
 echo "Резервная копия спика фильмов и сериалов" | mutt -s "Добавлен фильм или сериал" jeep456@yandex.ru
 
+file="~/jeeno/sites/orchid/public/films_2022*"
 
-if [];
+if [ -f $file ];
 then
-    echo "GOOD";
+    echo "Файл существует";
 else
-    echo "BAD";
+    echo "НЕТ ФАЙЛА";
 fi
