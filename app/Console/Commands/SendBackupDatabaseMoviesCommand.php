@@ -56,8 +56,8 @@ class SendBackupDatabaseMoviesCommand extends Command
 //                $filmsFromBD = Film::get(["id","name","year","type"]);
                 $filmsFromBD = Film::orderBy("id")->get(["id","name","year","type"]);
                 $today = now()->toDateString();
-                Storage::put("films.json_".$today,json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
-                Storage::append("films.json_".$today,json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::put("films_".$today.".json",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::append("films_".$today.".json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
 //                $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
