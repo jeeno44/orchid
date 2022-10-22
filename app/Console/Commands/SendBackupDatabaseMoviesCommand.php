@@ -50,14 +50,14 @@ class SendBackupDatabaseMoviesCommand extends Command
             echo "Значение из редиски - ".Redis::get("films")."\n";
 		    echo "Значение из базы - ".$films->count()."\n";
 
-		    if( Redis::get("films") != $films->count()){
+		    if(Redis::get("films") != $films->count()){
 			    //echo "ДЕЛАЕМ БЭКАП \n";
 			    // ТУТ ЛОГИКА БЭКАПА НА ЕМЕЙЛ ЛИБО В ФАЙЛ
 //                $filmsFromBD = Film::get(["id","name","year","type"]);
                 $filmsFromBD = Film::orderBy("id")->get(["id","name","year","type"]);
                 $today = now()->toDateString();
-                Storage::put("films.json (".$today.")",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
-                Storage::append("films.json",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::put("films.json_(".$today.")",json_encode($filmsFromBD,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+                Storage::append("films.json_(".$today.")",json_encode(["Всего фильмов" => ($films->count()+1)],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 
 //                $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
