@@ -65,9 +65,9 @@ class MoviesScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            ModalToggle::make("Редактировать фильм или сериал")->modal("editMovie")->method("editmovie"),
+//            ModalToggle::make("Редактировать фильм или сериал")->modal("editMovie")->method("editmovie"),
             ModalToggle::make("Добавить фильм или сериал")->modal("appendMovie")->method("setmovie"),
-            ModalToggle::make("Удалить")->modal("deleteMovie")->method("delmovie"),
+//            ModalToggle::make("Удалить")->modal("deleteMovie")->method("delmovie"),
         ];
     }
 

@@ -66,7 +66,7 @@ class TasksScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            ModalToggle::make("Редактировать задание")->modal("editTask")->method("edittask"),
+//            ModalToggle::make("Редактировать задание")->modal("editTask")->method("edittask"),
             ModalToggle::make("Добавить задание")->modal("appendTask")->method("settask"),
         ];
     }

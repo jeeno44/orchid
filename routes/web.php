@@ -40,3 +40,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('send/text', [\App\Http\Controllers\RabbitController::class, 'sendText']);
