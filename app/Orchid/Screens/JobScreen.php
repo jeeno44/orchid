@@ -15,23 +15,8 @@ class JobScreen extends Screen
      */
     public function query(): iterable
     {
-        $table = "<<<
- <table>
-<th>ID</th>
-<th>NAME</th>
-<th>DAY</th>
-<tr>
-<td>1</td>
-<td>Job</td>
-<td>Monday</td>
-</tr>
-</table>
->>>";
-
-        $table = explode("\n",$table);
-
         return [
-            "jobs" => $table
+            "jobs" => []
         ];
     }
 
