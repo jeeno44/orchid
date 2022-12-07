@@ -28,7 +28,7 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $this->info(gettype(now()->hour.":".now()->minute));
+        $this->info(now()->hour.":".now()->minute);
         if ((now()->hour.":".now()->minute) == "21:10"){
             $this->info("GOOD");
         }

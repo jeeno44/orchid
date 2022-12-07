@@ -17,10 +17,7 @@ class Kernel extends ConsoleKernel
     {
 
 
-        function SendTelega($token,$text,$chatId){
-            $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".$text."&chat_id=".$chatId;
-            file_get_contents($url);
-        }
+
 
 
         // $schedule->command('inspire')->hourly();
@@ -28,7 +25,15 @@ class Kernel extends ConsoleKernel
          $schedule->command('database:back')->everyMinute();
          $schedule->call(function () {
              $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
-             if ((now()->hour.":".now()->minute) == "22:10"){
+
+
+             function SendTelega($token,$text,$chatId){
+                 $url = "https://api.telegram.org/bot".$token."/sendMessage?text=".$text."&chat_id=".$chatId;
+                 file_get_contents($url);
+             }
+
+
+             if ((now()->hour.":".now()->minute) == "8:20"){
                  $this->info("GOOD");
                  SendTelega($TOKEN,"Поставить свечи","381581718");
              }
