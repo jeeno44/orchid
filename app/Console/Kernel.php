@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -35,10 +36,12 @@ class Kernel extends ConsoleKernel
 
              if ((now()->hour.":".now()->minute) == "8:20"){
                  $this->info("GOOD");
+                 Log::info("GOOG");
                  SendTelega($TOKEN,"Поставить свечи","381581718");
              }
              else{
                  $this->info("BAD");
+                 Log::info("BAD");
              }
          })->everyMinute();
     }
