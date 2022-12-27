@@ -118,10 +118,10 @@ return Link::make($task->id)
                 Input::make("task.task"),
 //                Input::make("lask.datetime"),
                 DateTimer::make('task.datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
-                Select::make("task.status")->options([
+                /*Select::make("task.status")->options([
                     'done' => 'Сделано',
                     'active' => 'Активировать',
-                ]),
+                ]),*/
             ]))->async('asyncGetTask')
         ];
     }
