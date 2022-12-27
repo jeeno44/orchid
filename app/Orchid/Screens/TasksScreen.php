@@ -145,6 +145,8 @@ return Link::make($task->id)
 
     public function edittask (Request $request)
     {
+        dump($request->task["datetime"]);
+        dd(1);
         Task::where("id",$request->task['id'])->update([
             "id" => $request->task["id"],
             "task" => $request->task["task"],
