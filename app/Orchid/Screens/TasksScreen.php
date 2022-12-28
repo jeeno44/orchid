@@ -113,6 +113,14 @@ return Link::make($task->id)
                 DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
             Layout::modal("editTask",Layout::rows([
+
+                $f_dt = Carbon::parse("2022-06-30 08:00:0");
+
+                $s_date = now();
+                
+                dump($s_date->diffInHours($f_dt,false));
+
+                dd(100);
                 //Upload::make('proto')->title("Загрузка")
                 Input::make("task.id")->type('hidden'),
                 Input::make("task.task"),
