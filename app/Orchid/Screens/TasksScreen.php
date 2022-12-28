@@ -145,7 +145,7 @@ return Link::make($task->id)
 
     public function edittask (Request $request)
     {
-        $f_dt = Carb("2022-06-30 08:00:0");
+        $f_dt = Carbon::parse("2022-06-30 08:00:0");
 
                 $s_date = now();
 
