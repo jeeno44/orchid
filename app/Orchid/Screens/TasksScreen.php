@@ -145,9 +145,9 @@ return Link::make($task->id)
 
     public function edittask (Request $request)
     {
-        $f_dt = Carbon::parse("2022-06-30 08:00:0");
+        $f_dt = Carbon::parse($request->task["datetime"]);
 
-                $s_date = now();
+                $s_date = now()->addMinutes(10);
 
                 dump($s_date->diffInHours($f_dt,false));
 
