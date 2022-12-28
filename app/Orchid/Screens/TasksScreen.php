@@ -155,15 +155,14 @@ return Link::make($task->id)
                     dump("СТАТУС АКТИВНО");
                 }
                 else{
-                    dump("СТАТУС НЕАКТИВНО");
+                    dump("СТАТУС НЕ АКТИВНО");
                 }
 
-                dd(100);
         Task::where("id",$request->task['id'])->update([
             "id" => $request->task["id"],
             "task" => $request->task["task"],
             "datetime" => $request->task["datetime"],
-            "status" => $request->task["status"],
+            "status" => ($diff_dt > 0) ? "active" : "done" ,
         ]);
     }
 
