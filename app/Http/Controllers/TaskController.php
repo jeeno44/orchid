@@ -11,7 +11,10 @@ class TaskController extends Controller
 
     public function deltask ($id)
     {
-        Task::where("id",$id)->delete();
+        Task::where([
+            ["id",$id],
+            ["status","done"]
+        ])->delete();
 
         return redirect(URL::previous());
         //return redirect()->route("platform.tasks");
