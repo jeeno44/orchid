@@ -146,7 +146,7 @@ return Link::make($task->id)
     public function edittask (Request $request)
     {
         $f_dt = Carbon::parse($request->task["datetime"]);
-        $s_date = now()->addMinutes(10);
+        $s_date = now()->addHour();
         $diff_dt = $s_date->diffInHours($f_dt,false);
 
         Task::where("id",$request->task['id'])->update([
