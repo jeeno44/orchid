@@ -146,17 +146,8 @@ return Link::make($task->id)
     public function edittask (Request $request)
     {
         $f_dt = Carbon::parse($request->task["datetime"]);
-
-                $s_date = now()->addMinutes(10);
-
-                $diff_dt = $s_date->diffInHours($f_dt,false);
-
-                if($diff_dt > 0){
-                    dump("СТАТУС АКТИВНО");
-                }
-                else{
-                    dump("СТАТУС НЕ АКТИВНО");
-                }
+        $s_date = now()->addMinutes(10);
+        $diff_dt = $s_date->diffInHours($f_dt,false);
 
         Task::where("id",$request->task['id'])->update([
             "id" => $request->task["id"],
