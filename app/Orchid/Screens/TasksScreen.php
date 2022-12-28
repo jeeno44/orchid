@@ -149,7 +149,14 @@ return Link::make($task->id)
 
                 $s_date = now()->addMinutes(10);
 
-                dump($s_date->diffInHours($f_dt,false));
+                $diff_dt = $s_date->diffInHours($f_dt,false);
+
+                if($diff_dt > 0){
+                    dump("СТАТУС АКТИВНО");
+                }
+                else{
+                    dump("СТАТУС НЕАКТИВНО");
+                }
 
                 dd(100);
         Task::where("id",$request->task['id'])->update([
