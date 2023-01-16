@@ -47,7 +47,7 @@ class TasksScreen extends Screen
             //'lask' => Task::find(19),
             'tasks' => Task::orderBy("datetime")->paginate(30),
 //            'tasks_today' => Task::whereDate("datetime",Carbon::today())->orderBy("datetime")->paginate(30),
-            'tasks_today' => Task::select(DB::raw('*'))->whereRaw('Date(datetime) = CURDATE()')->get(),
+            'tasks_today' => Task::select(DB::raw('*'))->whereRaw('Date(datetime) = CURRENT_DATE')->get(),
         ];
     }
 
