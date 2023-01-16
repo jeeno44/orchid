@@ -144,7 +144,36 @@ class TasksScreen extends Screen
                         }),
                     ]),
                 ],
-                "Завтра" => [],
+                "Завтра" => [
+                    Layout::table('tasks_tomorrow',[
+                        TD::make('id')->width(55),
+                        TD::make('task')->sort()->filter(),
+                        TD::make('datetime')->width(155),
+                        TD::make('status')->width(100)->sort(),
+                        TD::make('Edit')->render(function(Task $task){
+                            return ModalToggle::make("Редакторовать")
+                                ->modal("editTask")
+                                ->method("edittask")
+                                ->modalTitle("Редактировать задание ".$task->task)
+                                ->asyncParameters([
+                                    'task' => $task->id
+                                ]);
+                        }),
+                        TD::make('id','Delete')->width(100)->align(TD::ALIGN_RIGHT)->render(function(Task $task){
+                            return Link::make($task->id)
+                                ->href('deltask/'.$task->id);
+
+                        }),
+                        TD::make('created_at')->width(160)->defaultHidden()->render(function(Task $task){
+                            $dt = Carbon::create($task->created_at);
+                            return $dt->format("d.m.Y H:i");
+                        }),
+                        TD::make('updated_at')->width(160)->defaultHidden()->render(function(Task $task){
+                            $dt = Carbon::create($task->created_at);
+                            return $dt->format("d.m.Y H:i");
+                        }),
+                    ]),
+                ],
                 "Далее" => [],
             ]),
 
