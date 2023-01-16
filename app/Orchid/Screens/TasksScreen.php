@@ -19,6 +19,7 @@ use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Support\Facades\Toast;
 use Orchid\Attachment\File;
+use Illuminate\Support\Facades\DB;
 
 class TasksScreen extends Screen
 {
