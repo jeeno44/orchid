@@ -175,7 +175,7 @@ class TasksScreen extends Screen
                     ]),
                 ],
                 "Далее" => [],
-            ]),
+            ])->activeTab('Сегодня'),
 
             Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
