@@ -48,7 +48,7 @@ class TasksScreen extends Screen
             'tasks' => Task::orderBy("datetime")->paginate(30),
 //            'tasks_today' => Task::whereDate("datetime",Carbon::today())->orderBy("datetime")->paginate(30),
             'tasks_today' => Task::select(DB::raw('*'))->whereRaw('Date(datetime) = CURRENT_DATE')->get(),
-            'tasks_tomorrow' => Task::select(DB::raw('*'))->whereRaw("Date(datetime) = CURRENT_DATE + integer 1")->get(),
+            'tasks_tomorrow' => Task::select(DB::raw('*'))->whereRaw("Date(datetime) = 'CURRENT_DATE + integer 1'")->get(),
         ];
     }
 
