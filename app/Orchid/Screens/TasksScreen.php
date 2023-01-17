@@ -47,8 +47,8 @@ class TasksScreen extends Screen
             //'lask' => Task::find(19),
             'tasks' => Task::orderBy("datetime")->paginate(30),
 //            'tasks_today' => Task::whereDate("datetime",Carbon::today())->orderBy("datetime")->paginate(30),
-            'tasks_today' => Task::select(DB::raw('*'))->whereRaw('Date(datetime) = CURRENT_DATE')->get(),
-            'tasks_tomorrow' => Task::select(DB::raw('*'))->whereRaw("Date(datetime) = 'tomorrow'::TIMESTAMP")->get(),
+            'tasks_today' => Task::select(DB::raw('*'))->whereRaw('Date(datetime) = CURRENT_DATE')->where("status","active")->get(),
+            'tasks_tomorrow' => Task::select(DB::raw('*'))->whereRaw("Date(datetime) = 'tomorrow'::TIMESTAMP")->where("status","active")->get(),
         ];
     }
 
@@ -175,7 +175,7 @@ class TasksScreen extends Screen
                     ]),
                 ],
                 "Далее" => [],
-            ])->activeTab('Сегодня'),
+            ]),
 
             Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
