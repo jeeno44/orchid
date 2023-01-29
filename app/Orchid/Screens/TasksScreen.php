@@ -184,7 +184,7 @@ class TasksScreen extends Screen
                     ->value(1)
                     ->title('Free')
                     ->placeholder('Event for free')
-                    ->help('Event for free');
+                    ->help('Event for free')
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
             Layout::modal("editTask",Layout::rows([
                 //Upload::make('proto')->title("Загрузка")
