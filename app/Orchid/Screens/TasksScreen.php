@@ -90,7 +90,13 @@ class TasksScreen extends Screen
                         TD::make('id')->width(55),
                         TD::make('task',"Задача")->sort()->filter(),
                         TD::make('datetime', "Дата")->width(155),
-                        TD::make('repeat',"Повтор")->width(100),
+                        TD::make('repeat',"Повтор")->render(function(Task $task){
+                            switch ($task){
+                                case "once": return "Единожды";break;
+                                case "everday": return "Ежедневно";break;
+                                case "bdni": return "По Будням";break;
+                            }
+                        })->width(100),
                         TD::make('status')->width(100)->sort(),
                         TD::make('Edit')->render(function(Task $task){
                             return ModalToggle::make("Редакторовать")
