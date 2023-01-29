@@ -11,7 +11,7 @@ class Task extends Model
     use HasFactory;
     use AsSource;
 
-    protected $fillable = ['task','datetime','status'];
+    protected $fillable = ['task','datetime','status','repeat'];
 
     protected $allowedSorts = [
         'task',

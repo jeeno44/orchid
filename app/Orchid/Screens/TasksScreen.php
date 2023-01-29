@@ -181,7 +181,7 @@ class TasksScreen extends Screen
             Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
                 DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
-                Select::make('select')
+                Select::make('repeat')
                     ->options([
                         'once'   => 'Однократно',
                         'everyday' => 'Ежедневно',
@@ -216,6 +216,7 @@ class TasksScreen extends Screen
         Task::create([
             "task" => $request->task,
             "datetime" => $request->datetime,
+            "repeat" => $request->repeat,
         ]);
 
         Toast::info("Задача успешно добавлена");
