@@ -188,7 +188,7 @@ class TasksScreen extends Screen
                         'budni' => 'По Будням',
                     ])
                     ->title('Select tags')
-                    ->help('Allow search bots to index');
+                    ->help('Allow search bots to index')
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
             Layout::modal("editTask",Layout::rows([
                 //Upload::make('proto')->title("Загрузка")
