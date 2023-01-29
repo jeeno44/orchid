@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
          $schedule->command('send:tg')->everyMinute();
          $schedule->command('database:back')->everyMinute();
-         $schedule->call(function () {
+         /*$schedule->call(function () {
              $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
 
 
@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
                  $this->info("BAD");
                  Log::info("BAD");
              }
-         })->everyMinute();
+         })->everyMinute();*/
     }
 
     /**

@@ -30,16 +30,16 @@ class SendTelegrammCommand extends Command
      */
     public function handle()
     {
-        $dayOfTheWeek = Carbon::now()->dayOfWeek;
+        //$dayOfTheWeek = Carbon::now()->dayOfWeek;
 
         $TOKEN = "5594975307:AAFNLNLO06Gdvpp-3P4NbdmN1BYil5aLnDA";
         //Carbon::now()->toTimeString();
 
-        if ($dayOfTheWeek != 0 and Carbon::now()->toTimeString() == "18:00:00"){
+        /*if ($dayOfTheWeek != 0 and Carbon::now()->toTimeString() == "18:00:00"){
             $msg = "Отчёт за день";
             $url = "https://api.telegram.org/bot".$TOKEN."/sendMessage?text=".$msg."&chat_id=381581718";
             file_get_contents($url);
-        }
+        }*/
 
         try{
             $task = Task::where('status','active')->OrderBy('datetime')->first();
@@ -62,9 +62,20 @@ class SendTelegrammCommand extends Command
                 file_get_contents($url);
             }
 
-            Task::where("id",$task->id)->update([
-                "status" => "done"
-            ]);
+            if ($task->repeat == "once"){
+                Task::where("id",$task->id)->update([
+                    "status" => "done"
+                ]);
+            }
+
+            if ($task->repeat == "everyday"){
+
+                $tomorrow = Carbon::createFromDate($task->datetime)->addDay();
+
+                Task::where("id",$task->id)->update([
+                    "datetime" => $tomorrow
+                ]);
+            }
 
             return $this->info("SEND MESSAGE");
         }
