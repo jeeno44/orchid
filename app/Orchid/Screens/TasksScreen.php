@@ -187,8 +187,8 @@ class TasksScreen extends Screen
                         'everyday' => 'Ежедневно',
                         'budni' => 'По Будням',
                     ])
-                    ->title('Select tags')
-                    ->help('Allow search bots to index')
+                    ->title('Повтор')
+                    ->help('Выберите частоту повторов')
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
             Layout::modal("editTask",Layout::rows([
                 //Upload::make('proto')->title("Загрузка")
