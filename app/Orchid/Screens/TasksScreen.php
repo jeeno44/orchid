@@ -181,11 +181,8 @@ class TasksScreen extends Screen
             Layout::modal("appendTask",Layout::rows([
                 Input::make('task')->required()->type("text")->title('Задание'),
                 DateTimer::make('datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
-                CheckBox::make('free')
-                    ->value(1)
-                    ->title('Free')
-                    ->placeholder('Event for free')
-                    ->help('Event for free')
+                CheckBox::make('free')->value(1)->title('One')->placeholder('One')->required(),
+                CheckBox::make('free')->value(2)->title('Two')->placeholder('Two')->required(),
             ]))->title("Создание задания")->applyButton("Добавить")->closeButton("Отмена"),
             Layout::modal("editTask",Layout::rows([
                 //Upload::make('proto')->title("Загрузка")
