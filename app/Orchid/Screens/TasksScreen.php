@@ -91,7 +91,7 @@ class TasksScreen extends Screen
                         TD::make('task',"Задача")->sort()->filter(),
                         TD::make('datetime', "Дата")->width(155),
                         TD::make('repeat',"Повтор")->render(function(Task $task){
-                            switch ($task){
+                            switch ($task->repeat){
                                 case "once": return "Единожды";break;
                                 case "everday": return "Ежедневно";break;
                                 case "bdni": return "По Будням";break;
