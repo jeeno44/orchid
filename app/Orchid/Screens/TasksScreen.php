@@ -88,8 +88,9 @@ class TasksScreen extends Screen
                 "Все" => [
                     Layout::table('tasks',[
                         TD::make('id')->width(55),
-                        TD::make('task')->sort()->filter(),
-                        TD::make('datetime')->width(155),
+                        TD::make('task',"Задача")->sort()->filter(),
+                        TD::make('datetime', "Дата")->width(155),
+                        TD::make('repeat',"Повтор")->width(100),
                         TD::make('status')->width(100)->sort(),
                         TD::make('Edit')->render(function(Task $task){
                             return ModalToggle::make("Редакторовать")
