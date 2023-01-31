@@ -127,6 +127,13 @@ class TasksScreen extends Screen
                         TD::make('id')->width(55),
                         TD::make('task')->sort()->filter(),
                         TD::make('datetime')->width(155),
+                        TD::make('repeat',"Повтор")->render(function(Task $task){
+                            switch ($task->repeat){
+                                case "once": return "Единожды";break;
+                                case "everyday": return "Ежедневно";break;
+                                case "budni": return "По Будням";break;
+                            }
+                        })->width(100),
                         TD::make('status')->width(100)->sort(),
                         TD::make('Edit')->render(function(Task $task){
                             return ModalToggle::make("Редакторовать")
@@ -157,6 +164,13 @@ class TasksScreen extends Screen
                         TD::make('id')->width(55),
                         TD::make('task')->sort()->filter(),
                         TD::make('datetime')->width(155),
+                        TD::make('repeat',"Повтор")->render(function(Task $task){
+                            switch ($task->repeat){
+                                case "once": return "Единожды";break;
+                                case "everyday": return "Ежедневно";break;
+                                case "budni": return "По Будням";break;
+                            }
+                        })->width(100),
                         TD::make('status')->width(100)->sort(),
                         TD::make('Edit')->render(function(Task $task){
                             return ModalToggle::make("Редакторовать")
