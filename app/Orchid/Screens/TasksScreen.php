@@ -217,10 +217,18 @@ class TasksScreen extends Screen
                 Input::make("task.task"),
 //                Input::make("lask.datetime"),
                 DateTimer::make('task.datetime')->required()->title('Установить дату и время')->format24hr()->enableTime(),
-                /*Select::make("task.status")->options([
+                Select::make("task.status")->options([
                     'done' => 'Сделано',
                     'active' => 'Активировать',
-                ]),*/
+                ]),
+                Select::make('repeat')
+                    ->options([
+                        'once'   => 'Однократно',
+                        'everyday' => 'Ежедневно',
+                        'budni' => 'По Будням',
+                    ])
+                    ->title('Повтор')
+                    ->help('Выберите частоту повторов')
             ]))->async('asyncGetTask')
         ];
     }
