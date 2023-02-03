@@ -261,7 +261,7 @@ class TasksScreen extends Screen
             "id" => $request->task["id"],
             "task" => $request->task["task"],
             "datetime" => $request->task["datetime"],
-            "repeat" => $request->task["repeat"],
+            "repeat" => $request->repeat,
             "status" => ($diff_dt > 0) ? "active" : "done" ,
         ]);
     }
